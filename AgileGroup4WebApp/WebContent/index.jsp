@@ -8,6 +8,6 @@
 <title>Agile Group 4 Home</title>
 </head>
 <body>
-	<% out.println("Hello World!"); %>
+	<% out.println("Tom is taking over this website please"); %>
 </body>
 </html>
