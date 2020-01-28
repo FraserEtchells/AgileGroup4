@@ -13,9 +13,20 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm">
-          <div class="form-group">
-            <!--The Filter Form goes here-->
-          <div>
+          <!--This is the Filter Form-->
+          <form>
+            <div class="row">
+              <div class="col">
+                <label for="minPrice">Min. Price</label>
+                <input type="number" class="form-control" placeholder="0" name="minPrice" min="0" max="1300000" id="minPrice">
+              </div>
+              <div class="col">
+                <label for="maxPrice">Max. Price</label>
+                <input type="number" class="form-control" placeholder="1300000" name="maxPrice" min="0" max="1300000" id="maxPrice">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
         <div class ="col-sm-9">
             <!--The Table goes here-->
