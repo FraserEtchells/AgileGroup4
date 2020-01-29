@@ -13,9 +13,17 @@
 
     <!--Local style sheet-->
     <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
+
+    <style>
+    	.scrollingTable {
+        overflow-y: auto;
+      }
+   </style>
 
   </head>
-  <body>
+  <body onload="makeTableScroll();">
     <div class="bg">
       <div class="container-fluid">
         <!--This applies the oswald font to the entire website-->
@@ -57,14 +65,230 @@
               </form>
             </div>
             <div class ="col-sm-9">
-                <!--The Table goes here-->
-                <script>
-                  //TODO: Grab data here
-                </script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--The Table goes here-->
+      <div class="limiter">
+          <div class="container-table100">
+            <div class="wrap-table100">
+              <div class="table100 scrollingTable">
+                <table id="myTable">
+                  <thead>
+                    <tr class="table100-head">
+                      <th class="column1" onclick="sortTable(0)">Procedure</th>
+                      <th class="column2" onclick="sortTable(1)">Institute</th>
+                      <th class="column3" onclick="sortTableNumericaly(2)">Price</th>
+                      <th class="column4" onclick="sortTableNumericaly(3)">Distance</th>
+                      <th class="column5" onclick="sortTableNumericaly(4)">Rank</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td class="column1">A871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV >96 HOURS W MCC</td>
+                        <td class="column2">HOUSTON METHODIST THE WOODLANDS HOSPITAL</td>
+                        <td class="column3">1070</td>
+                        <td class="column4">10</td>
+                        <td class="column5">11</td>
+                      </tr>
+                      <tr>
+                        <td class="column1">L037 - EXTRACRANIAL PROCEDURES W MCC</td>
+                        <td class="column2">SOUTHEAST ALABAMA MEDICAL CENTER</td>
+                        <td class="column3">100427</td>
+                        <td class="column4">25</td>
+                        <td class="column5">40</td>
+                      </tr>
+                      <tr>
+                        <td class="column1">Y163 - MAJOR CHEST PROCEDURES W MCC</td>
+                        <td class="column2">NEW TORK</td>
+                        <td class="column3">22</td>
+                        <td class="column4">1</td>
+                        <td class="column5">2</td>
+                      </tr>
+                      <tr>
+                        <td class="column1">MARRIAGE</td>
+                        <td class="column2">UKRAINIAN PROSTITUTES</td>
+                        <td class="column3">100</td>
+                        <td class="column4">1000</td>
+                        <td class="column5">3</td>
+                      </tr>
+                      <tr>
+                        <td class="column1">MARRIAGE</td>
+                        <td class="column2">UKRAINIAN PROSTITUTES</td>
+                        <td class="column3">100</td>
+                        <td class="column4">1000</td>
+                        <td class="column5">3</td>
+                      </tr>
+                      <tr>
+                        <td class="column1">MARRIAGE</td>
+                        <td class="column2">UKRAINIAN PROSTITUTES</td>
+                        <td class="column3">100</td>
+                        <td class="column4">1000</td>
+                        <td class="column5">3</td>
+                      </tr>
+                      <tr>
+                        <td class="column1">MARRIAGE</td>
+                        <td class="column2">UKRAINIAN PROSTITUTES</td>
+                        <td class="column3">100</td>
+                        <td class="column4">1000</td>
+                        <td class="column5">3</td>
+                      </tr>
+                      <tr>
+                        <td class="column1">MARRIAGE</td>
+                        <td class="column2">UKRAINIAN PROSTITUTES</td>
+                        <td class="column3">100</td>
+                        <td class="column4">1000</td>
+                        <td class="column5">3</td>
+                      </tr>
+                      <tr>
+                        <td class="column1">MARRIAGE</td>
+                        <td class="column2">UKRAINIAN PROSTITUTES</td>
+                        <td class="column3">100</td>
+                        <td class="column4">1000</td>
+                        <td class="column5">3</td>
+                      </tr>
+                      <tr>
+                        <td class="column1">MARRIAGE</td>
+                        <td class="column2">UKRAINIAN PROSTITUTES</td>
+                        <td class="column3">100</td>
+                        <td class="column4">1000</td>
+                        <td class="column5">3</td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </body>
+<script>
+  function sortTable(n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("myTable");
+    switching = true;
+    // Set the sorting direction to ascending:
+    dir = "asc";
+    /* Make a loop that will continue until
+    no switching has been done: */
+    while (switching) {
+      // Start by saying: no switching is done:
+      switching = false;
+      rows = table.rows;
+      /* Loop through all table rows (except the
+      first, which contains table headers): */
+      for (i = 1; i < (rows.length - 1); i++) {
+        // Start by saying there should be no switching:
+        shouldSwitch = false;
+        /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /* Check if the two rows should switch place,
+        based on the direction, asc or desc: */
+        if (dir == "asc") {
+          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        // Each time a switch is done, increase this count by 1:
+        switchcount ++;
+      } else {
+        /* If no switching has been done AND the direction is "asc",
+        set the direction to "desc" and run the while loop again. */
+        if (switchcount == 0 && dir == "asc") {
+          dir = "desc";
+          switching = true;
+        }
+      }
+    }
+  }
+
+  function sortTableNumericaly(n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("myTable");
+    switching = true;
+    // Set the sorting direction to ascending:
+    dir = "asc";
+    /* Make a loop that will continue until
+    no switching has been done: */
+    while (switching) {
+      // Start by saying: no switching is done:
+      switching = false;
+      rows = table.rows;
+      /* Loop through all table rows (except the
+      first, which contains table headers): */
+      for (i = 1; i < (rows.length - 1); i++) {
+        // Start by saying there should be no switching:
+        shouldSwitch = false;
+        /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /* Check if the two rows should switch place,
+        based on the direction, asc or desc: */
+        if (dir == "asc") {
+          if (Number(x.innerHTML) > Number(y.innerHTML)) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          if (Number(x.innerHTML) < Number(y.innerHTML)) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        // Each time a switch is done, increase this count by 1:
+        switchcount ++;
+      } else {
+        /* If no switching has been done AND the direction is "asc",
+        set the direction to "desc" and run the while loop again. */
+        if (switchcount == 0 && dir == "asc") {
+          dir = "desc";
+          switching = true;
+        }
+      }
+    }
+  }
+
+  function makeTableScroll() {
+      // Constant retrieved from server-side via JSP
+      var maxRows = 10;
+
+      var table = document.getElementById('myTable');
+      var wrapper = table.parentNode;
+      var rowsInTable = table.rows.length;
+      var height = 0;
+      if (rowsInTable > maxRows) {
+          for (var i = 0; i < maxRows; i++) {
+              height += table.rows[i].clientHeight;
+          }
+          wrapper.style.height = height + "px";
+      }
+  }
+</script>
 </html>
