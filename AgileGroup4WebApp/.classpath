@@ -11,5 +11,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/smith/Documents/javax.servlet.jar"/>
 	<classpathentry kind="lib" path="src/testlib/mysql-connector-java-8.0.19.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.preview.runtimeTarget/J2EE Preview"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
