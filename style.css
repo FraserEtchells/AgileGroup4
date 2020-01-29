@@ -1,0 +1,25 @@
+body,html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg{
+  background-image: url(images/abstractBlue.jpg);
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#oswaldFont div{
+  font-family: 'Oswald', sans-serif;
+}
+
+.

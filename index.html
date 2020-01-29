@@ -1,4 +1,4 @@
-<HTML lang="en">
+<html lang="en">
   <head>
     <title>Craneware Healtcare Indexer</title>
     <meta charset="utf-8">
@@ -8,33 +8,63 @@
     <!--Bootstrap import-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <!--Oswald Font-->
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+
+    <!--Local style sheet-->
+    <link href="style.css" rel="stylesheet">
+
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm">
-          <!--This is the Filter Form-->
-          <form>
-            <div class="row">
-              <div class="col">
-                <label for="minPrice">Min. Price</label>
-                <input type="number" class="form-control" placeholder="0" name="minPrice" min="0" max="1300000" id="minPrice">
-              </div>
-              <div class="col">
-                <label for="maxPrice">Max. Price</label>
-                <input type="number" class="form-control" placeholder="1300000" name="maxPrice" min="0" max="1300000" id="maxPrice">
-              </div>
+    <div class="bg">
+      <div class="container-fluid">
+        <!--This applies the oswald font to the entire website-->
+        <div id="oswaldFont">
+          <div class="row">
+            <div class="col-sm">
+              <!--This is the Filter Form-->
+              <form>
+                <div class="row">
+                  <div class="col">
+                    <label for="minPrice">Min. Price</label>
+                    <input type="number" class="form-control" placeholder="0" name="minPrice" min="0" max="1300000" id="minPrice">
+                  </div>
+                  <div class="col">
+                    <label for="maxPrice">Max. Price</label>
+                    <input type="number" class="form-control" placeholder="1300000" name="maxPrice" min="0" max="1300000" id="maxPrice">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="area">Location</label>
+                    <input type="text" class="form-control" placeholder="Location" id="area">
+                  </div>
+                  <div class="col">
+                    <label for="distance">Distance</label>
+                    <select class="form-control" id="distance">
+                      <option>1 mile</option>
+                      <option>5 miles</option>
+                      <option>10 miles</option>
+                      <option>15 miles</option>
+                      <option>30 miles</option>
+                      <option>50 miles</option>
+                      <option>75 miles</option>
+                      <option>100 miles</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+            <div class ="col-sm-9">
+                <!--The Table goes here-->
+                <script>
+                  //TODO: Grab data here
+                </script>
+            </div>
+          </div>
         </div>
-        <div class ="col-sm-9">
-            <!--The Table goes here-->
-            <script>
-              //TODO: Grab data here
-            </script>
-        </div>
-      <div>
+      </div>
     </div>
   </body>
-</HTML>
+</html>
