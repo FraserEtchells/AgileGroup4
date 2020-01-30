@@ -1,15 +1,15 @@
 <html lang="en">
-  <head>
-    <title>Craneware Healthcare Indexer</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Aditya K. Menon">
+<head>
+  <title>Craneware Healthcare Indexer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Aditya K. Menon">
 
-    <!--Bootstrap import-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!--Bootstrap import-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <!--Oswald Font-->
-    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+  <!--Oswald Font-->
+  <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
 
     <!--Local style sheet-->
     <link href="style.css" rel="stylesheet">
@@ -170,6 +170,96 @@
             </div>
           </div>
         </div>
+        <div class ="col-sm-9">'
+          <!--The Table goes here-->
+          <div class="tableMargin">
+            <div class="transparentLightBackground">
+              <table id="myTable" class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" onclick="sortTable(0)">Procedure</th>
+                    <th scope="col" onclick="sortTable(1)">Institute</th>
+                    <th scope="col" onclick="sortTableNumericaly(2)">Price</th>
+                    <th scope="col" onclick="sortTableNumericaly(3)">Distance</th>
+                    <th scope="col" onclick="sortTableNumericaly(4)">Rank</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>A871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV >96 HOURS W MCC</td>
+                    <td>HOUSTON METHODIST THE WOODLANDS HOSPITAL</td>
+                    <td>1070</td>
+                    <td>10</td>
+                    <td>11</td>
+                  </tr>
+                  <tr>
+                    <td>L037 - EXTRACRANIAL PROCEDURES W MCC</td>
+                    <td>SOUTHEAST ALABAMA MEDICAL CENTER</td>
+                    <td>100427</td>
+                    <td>25</td>
+                    <td>40</td>
+                  </tr>
+                  <tr>
+                    <td>Y163 - MAJOR CHEST PROCEDURES W MCC</td>
+                    <td>NEW TORK</td>
+                    <td>22</td>
+                    <td>1</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>MARRIAGE</td>
+                    <td>UKRAINIAN PROSTITUTES</td>
+                    <td>100</td>
+                    <td>1000</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>MARRIAGE</td>
+                    <td>UKRAINIAN PROSTITUTES</td>
+                    <td>100</td>
+                    <td>1000</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>MARRIAGE</td>
+                    <td>UKRAINIAN PROSTITUTES</td>
+                    <td>100</td>
+                    <td>1000</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>MARRIAGE</td>
+                    <td>UKRAINIAN PROSTITUTES</td>
+                    <td>100</td>
+                    <td>1000</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>MARRIAGE</td>
+                    <td>UKRAINIAN PROSTITUTES</td>
+                    <td>100</td>
+                    <td>1000</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>MARRIAGE</td>
+                    <td>UKRAINIAN PROSTITUTES</td>
+                    <td>100</td>
+                    <td>1000</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>MARRIAGE</td>
+                    <td>UKRAINIAN PROSTITUTES</td>
+                    <td>100</td>
+                    <td>1000</td>
+                    <td>3</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
@@ -230,75 +320,75 @@
 			}
 		}
 
-		function sortTableNumericaly(n) {
-			var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-			table = document.getElementById("myTable");
-			switching = true;
-			// Set the sorting direction to ascending:
-			dir = "asc";
-			/* Make a loop that will continue until
-			no switching has been done: */
-			while (switching) {
-				// Start by saying: no switching is done:
-				switching = false;
-				rows = table.rows;
-				/* Loop through all table rows (except the
-				first, which contains table headers): */
-				for (i = 1; i < (rows.length - 1); i++) {
-					// Start by saying there should be no switching:
-					shouldSwitch = false;
-					/* Get the two elements you want to compare,
-					one from current row and one from the next: */
-					x = rows[i].getElementsByTagName("TD")[n];
-					y = rows[i + 1].getElementsByTagName("TD")[n];
-					/* Check if the two rows should switch place,
-					based on the direction, asc or desc: */
-					if (dir == "asc") {
-						if (Number(x.innerHTML) > Number(y.innerHTML)) {
-							// If so, mark as a switch and break the loop:
-							shouldSwitch = true;
-							break;
-						}
-					} else if (dir == "desc") {
-						if (Number(x.innerHTML) < Number(y.innerHTML)) {
-							// If so, mark as a switch and break the loop:
-							shouldSwitch = true;
-							break;
-						}
-					}
-				}
-				if (shouldSwitch) {
-					/* If a switch has been marked, make the switch
-					and mark that a switch has been done: */
-					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-					switching = true;
-					// Each time a switch is done, increase this count by 1:
-					switchcount ++;
-				} else {
-					/* If no switching has been done AND the direction is "asc",
-					set the direction to "desc" and run the while loop again. */
-					if (switchcount == 0 && dir == "asc") {
-						dir = "desc";
-						switching = true;
-					}
-				}
-			}
-		}
+function sortTableNumericaly(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = "asc";
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /* Check if the two rows should switch place,
+      based on the direction, asc or desc: */
+      if (dir == "asc") {
+        if (Number(x.innerHTML) > Number(y.innerHTML)) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (Number(x.innerHTML) < Number(y.innerHTML)) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      // Each time a switch is done, increase this count by 1:
+      switchcount ++;
+    } else {
+      /* If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again. */
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
 
-		function makeTableScroll() {
-				// Constant retrieved from server-side via JSP
-				var maxRows = 10;
+function makeTableScroll() {
+  // Constant retrieved from server-side via JSP
+  var maxRows = 10;
 
-				var table = document.getElementById('myTable');
-				var wrapper = table.parentNode;
-				var rowsInTable = table.rows.length;
-				var height = 0;
-				if (rowsInTable > maxRows) {
-						for (var i = 0; i < maxRows; i++) {
-								height += table.rows[i].clientHeight;
-						}
-						wrapper.style.height = height + "px";
-				}
-		}
-	</script>
+  var table = document.getElementById('myTable');
+  var wrapper = table.parentNode;
+  var rowsInTable = table.rows.length;
+  var height = 0;
+  if (rowsInTable > maxRows) {
+    for (var i = 0; i < maxRows; i++) {
+      height += table.rows[i].clientHeight;
+    }
+    wrapper.style.height = height + "px";
+  }
+}
+</script>
 </html>
