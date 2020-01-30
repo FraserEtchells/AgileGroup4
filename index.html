@@ -14,11 +14,21 @@
     <!--Local style sheet-->
     <link href="style.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/inputform.css">
     <link rel="stylesheet" type="text/css" href="css/table.css">
 
 		<style>
     	.scrollingTable {
         overflow-y: auto;
+      }
+
+      .formBorder {
+        width:1170px;
+        border-style: solid;
+        border-width: 5px;
+        border-color: white;
+        background:#fcbe03;
+        padding: 10px;
       }
    </style>
   </head>
@@ -42,7 +52,7 @@
       <div id="oswaldFont">
 				<br>
         <!--This is the Search Form-->
-				<form>
+				<center><form class="formBorder">
 					<div class="containter">
 						<div class="mx-2">
 							<div class="row">
@@ -74,36 +84,31 @@
 								<div class="col-7">
 									<!--Price filter-->
 									<div class="row">
-										<div class="col-2">
-											<input type="checkbox" name="price" value="priceRange"> Price
+										<div class="col-1">
+										</div>
+										<div class="col" style="width">
+											<input type="number" class="form-control" placeholder="Min Price" name="minPrice" min="0" max="1300000" id="minPrice">
 										</div>
 										<div class="col-1">
-											Min £
 										</div>
 										<div class="col">
-											<input type="number" class="form-control" placeholder="0" name="minPrice" min="0" max="1300000" id="minPrice">
-										</div>
-										<div class="col-1">
-											Max £
-										</div>
-										<div class="col">
-											<input type="number" class="form-control" placeholder="1300000" name="maxPrice" min="0" max="1300000" id="maxPrice">
+											<input type="number" class="form-control" placeholder="Max Price" name="maxPrice" min="0" max="1300000" id="maxPrice">
 										</div>
 									</div>
 									<!--Location filter-->
-									<div class="row">
-										<div class="col-2">
-											<input type="checkbox" name="location" value="locationRange"> Location
-										</div>
+									<div class="row" style="padding-top:10px">
+                    <label class="switch">
+                      <input type="checkbox" checked>
+                      <span class="slider round"></span>
+                    </label>
 										<div class="col-5">
 											<input type="text" class="form-control" placeholder="Location" id="area">
 										</div>
 										<div class="col-1">
-											Distance
 										</div>
 										<div class="col">
-											<select class="form-control" id="distance">
-												<option>1 mile</option>
+											<select class="form-control" id="distance" placeholder="Max Price">
+												<option value="" disabled selected>Distance</option>
 												<option>5 miles</option>
 												<option>10 miles</option>
 												<option>15 miles</option>
@@ -120,7 +125,7 @@
 					</div>
 					<br>
 					<center><button type="submit" class="btn btn-primary">Submit</button></center>
-				</form>
+				</form>	<center>
 
 				<!--The Table goes here-->
 				<div class="limiter">
@@ -132,8 +137,8 @@
                     <tr class="table100-head">
                       <th class="column1" onclick="sortTable(0)">Procedure</th>
                       <th class="column2" onclick="sortTable(1)">Institute</th>
-                      <th class="column3" onclick="sortTableNumericaly(2)">Price</th>
-                      <th class="column4" onclick="sortTableNumericaly(3)">Distance</th>
+                      <th class="column3" onclick="sortTableNumericaly(2)">Price ($) </th>
+                      <th class="column4" onclick="sortTableNumericaly(3)">Distance (KM)</th>
                       <th class="column5" onclick="sortTableNumericaly(4)">Rank</th>
                     </tr>
                   </thead>
