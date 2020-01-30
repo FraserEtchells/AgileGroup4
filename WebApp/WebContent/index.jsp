@@ -9,10 +9,10 @@
 
 <title>Agile</title>
 
-<link href=".../css/style.css" rel="stylesheet" type = "text/css">
-<link rel="stylesheet" type="text/css" href=".../css/util.css=-">
-<link rel="stylesheet" type="text/css" href=".../css/inputform.css">
-<link rel="stylesheet" type="text/css" href=".../css/table.css">
+<link rel="stylesheet" type="text/css" href="css/util.css">
+<link rel="stylesheet" type="text/css" href="css/inputform.css">
+<link rel="stylesheet" type="text/css" href="css/table.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <style>
@@ -29,25 +29,36 @@
         padding: 10px;
       }
    </style>
+</head>
 <body>
   <!--Sets a background to the website-->
   <div class="bg">
     <!--This applies the oswald font to the entire website-->
     <div id="oswaldFont">
       <!--Adds padding to the search bar-->
-      <div class="pad">
-        <div class="row">
-          <!--Centrally aligning the search bar-->
-          <div class="col"><!--Could potentially put a logo here--></div>
-          <div class="col">
-            <!--TODO: Add action to form-->
-            <form action="">
-              <input class="form-control" type="text" placeholder="Search" name="search">
-            </form>
-          </div>
-          <div class="col"></div>
-        </div>
-      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
       <div class="row">
         <div class="col-sm">
           <!--Puts a margin to left of the filter-->
@@ -56,6 +67,12 @@
               <!--This is the Filter Form-->
               <!--TODO: add an action to the form-->
               <form action="">
+              	<div class = "row">
+              		<div class = "col">
+              			<input class="form-control" type="search" placeholder="Procedure ID or Condition" name="search">
+              			<br>
+              		</div>
+              	</div>
                 <div class="row">
                   <div class="col">
                     <label for="minPrice">Min. Price</label>
@@ -85,6 +102,7 @@
                     </select>
                   </div>
                 </div>
+                <br>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
             </div>
