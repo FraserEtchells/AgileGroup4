@@ -16,19 +16,18 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/table.css">
 
-    <style>
+		<style>
     	.scrollingTable {
         overflow-y: auto;
       }
-      .center {
-        margin: auto;
-        width: 50%;
-        padding: 10px;
-      }
    </style>
-
   </head>
-  <body class="bg" onload="makeTableScroll();">
+
+  <body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">Craneware Healthcare</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
     <div class="bg">
       <div class="container-fluid center" style="padding-top: 100px">
         <!--This applies the oswald font to the entire website-->
@@ -76,6 +75,13 @@
       </div>
       <!--The Table goes here-->
       <div class="limiter">
+										<div class="col">
+											<input type="number" class="form-control" placeholder="1300000" name="maxPrice" min="0" max="1300000" id="maxPrice">
+										</div>
+									</div>
+									<!--Location filter-->
+									<div class="row">
+										<div class="col-2">
           <div class="container-table100">
             <div class="wrap-table100">
               <div class="table100 scrollingTable">
@@ -122,44 +128,6 @@
                         <td class="column1">MARRIAGE</td>
                         <td class="column2">UKRAINIAN PROSTITUTES</td>
                         <td class="column3">100</td>
-                        <td class="column4">1000</td>
-                        <td class="column5">3</td>
-                      </tr>
-                      <tr>
-                        <td class="column1">MARRIAGE</td>
-                        <td class="column2">UKRAINIAN PROSTITUTES</td>
-                        <td class="column3">100</td>
-                        <td class="column4">1000</td>
-                        <td class="column5">3</td>
-                      </tr>
-                      <tr>
-                        <td class="column1">MARRIAGE</td>
-                        <td class="column2">UKRAINIAN PROSTITUTES</td>
-                        <td class="column3">100</td>
-                        <td class="column4">1000</td>
-                        <td class="column5">3</td>
-                      </tr>
-                      <tr>
-                        <td class="column1">MARRIAGE</td>
-                        <td class="column2">UKRAINIAN PROSTITUTES</td>
-                        <td class="column3">100</td>
-                        <td class="column4">1000</td>
-                        <td class="column5">3</td>
-                      </tr>
-                      <tr>
-                        <td class="column1">MARRIAGE</td>
-                        <td class="column2">UKRAINIAN PROSTITUTES</td>
-                        <td class="column3">100</td>
-                        <td class="column4">1000</td>
-                        <td class="column5">3</td>
-                      </tr>
-                      <tr>
-                        <td class="column1">MARRIAGE</td>
-                        <td class="column2">UKRAINIAN PROSTITUTES</td>
-                        <td class="column3">100</td>
-                        <td class="column4">1000</td>
-                        <td class="column5">3</td>
-                      </tr>
                   </tbody>
                 </table>
               </div>
@@ -169,131 +137,132 @@
       </div>
     </div>
   </body>
-<script>
-  function sortTable(n) {
-    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    table = document.getElementById("myTable");
-    switching = true;
-    // Set the sorting direction to ascending:
-    dir = "asc";
-    /* Make a loop that will continue until
-    no switching has been done: */
-    while (switching) {
-      // Start by saying: no switching is done:
-      switching = false;
-      rows = table.rows;
-      /* Loop through all table rows (except the
-      first, which contains table headers): */
-      for (i = 1; i < (rows.length - 1); i++) {
-        // Start by saying there should be no switching:
-        shouldSwitch = false;
-        /* Get the two elements you want to compare,
-        one from current row and one from the next: */
-        x = rows[i].getElementsByTagName("TD")[n];
-        y = rows[i + 1].getElementsByTagName("TD")[n];
-        /* Check if the two rows should switch place,
-        based on the direction, asc or desc: */
-        if (dir == "asc") {
-          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-            // If so, mark as a switch and break the loop:
-            shouldSwitch = true;
-            break;
-          }
-        } else if (dir == "desc") {
-          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-            // If so, mark as a switch and break the loop:
-            shouldSwitch = true;
-            break;
-          }
-        }
-      }
-      if (shouldSwitch) {
-        /* If a switch has been marked, make the switch
-        and mark that a switch has been done: */
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-        // Each time a switch is done, increase this count by 1:
-        switchcount ++;
-      } else {
-        /* If no switching has been done AND the direction is "asc",
-        set the direction to "desc" and run the while loop again. */
-        if (switchcount == 0 && dir == "asc") {
-          dir = "desc";
-          switching = true;
-        }
-      }
-    }
-  }
 
-  function sortTableNumericaly(n) {
-    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    table = document.getElementById("myTable");
-    switching = true;
-    // Set the sorting direction to ascending:
-    dir = "asc";
-    /* Make a loop that will continue until
-    no switching has been done: */
-    while (switching) {
-      // Start by saying: no switching is done:
-      switching = false;
-      rows = table.rows;
-      /* Loop through all table rows (except the
-      first, which contains table headers): */
-      for (i = 1; i < (rows.length - 1); i++) {
-        // Start by saying there should be no switching:
-        shouldSwitch = false;
-        /* Get the two elements you want to compare,
-        one from current row and one from the next: */
-        x = rows[i].getElementsByTagName("TD")[n];
-        y = rows[i + 1].getElementsByTagName("TD")[n];
-        /* Check if the two rows should switch place,
-        based on the direction, asc or desc: */
-        if (dir == "asc") {
-          if (Number(x.innerHTML) > Number(y.innerHTML)) {
-            // If so, mark as a switch and break the loop:
-            shouldSwitch = true;
-            break;
-          }
-        } else if (dir == "desc") {
-          if (Number(x.innerHTML) < Number(y.innerHTML)) {
-            // If so, mark as a switch and break the loop:
-            shouldSwitch = true;
-            break;
-          }
-        }
-      }
-      if (shouldSwitch) {
-        /* If a switch has been marked, make the switch
-        and mark that a switch has been done: */
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-        // Each time a switch is done, increase this count by 1:
-        switchcount ++;
-      } else {
-        /* If no switching has been done AND the direction is "asc",
-        set the direction to "desc" and run the while loop again. */
-        if (switchcount == 0 && dir == "asc") {
-          dir = "desc";
-          switching = true;
-        }
-      }
-    }
-  }
+	<script>
+		function sortTable(n) {
+			var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+			table = document.getElementById("myTable");
+			switching = true;
+			// Set the sorting direction to ascending:
+			dir = "asc";
+			/* Make a loop that will continue until
+			no switching has been done: */
+			while (switching) {
+				// Start by saying: no switching is done:
+				switching = false;
+				rows = table.rows;
+				/* Loop through all table rows (except the
+				first, which contains table headers): */
+				for (i = 1; i < (rows.length - 1); i++) {
+					// Start by saying there should be no switching:
+					shouldSwitch = false;
+					/* Get the two elements you want to compare,
+					one from current row and one from the next: */
+					x = rows[i].getElementsByTagName("TD")[n];
+					y = rows[i + 1].getElementsByTagName("TD")[n];
+					/* Check if the two rows should switch place,
+					based on the direction, asc or desc: */
+					if (dir == "asc") {
+						if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+							// If so, mark as a switch and break the loop:
+							shouldSwitch = true;
+							break;
+						}
+					} else if (dir == "desc") {
+						if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+							// If so, mark as a switch and break the loop:
+							shouldSwitch = true;
+							break;
+						}
+					}
+				}
+				if (shouldSwitch) {
+					/* If a switch has been marked, make the switch
+					and mark that a switch has been done: */
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+					// Each time a switch is done, increase this count by 1:
+					switchcount ++;
+				} else {
+					/* If no switching has been done AND the direction is "asc",
+					set the direction to "desc" and run the while loop again. */
+					if (switchcount == 0 && dir == "asc") {
+						dir = "desc";
+						switching = true;
+					}
+				}
+			}
+		}
 
-  function makeTableScroll() {
-      // Constant retrieved from server-side via JSP
-      var maxRows = 10;
+		function sortTableNumericaly(n) {
+			var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+			table = document.getElementById("myTable");
+			switching = true;
+			// Set the sorting direction to ascending:
+			dir = "asc";
+			/* Make a loop that will continue until
+			no switching has been done: */
+			while (switching) {
+				// Start by saying: no switching is done:
+				switching = false;
+				rows = table.rows;
+				/* Loop through all table rows (except the
+				first, which contains table headers): */
+				for (i = 1; i < (rows.length - 1); i++) {
+					// Start by saying there should be no switching:
+					shouldSwitch = false;
+					/* Get the two elements you want to compare,
+					one from current row and one from the next: */
+					x = rows[i].getElementsByTagName("TD")[n];
+					y = rows[i + 1].getElementsByTagName("TD")[n];
+					/* Check if the two rows should switch place,
+					based on the direction, asc or desc: */
+					if (dir == "asc") {
+						if (Number(x.innerHTML) > Number(y.innerHTML)) {
+							// If so, mark as a switch and break the loop:
+							shouldSwitch = true;
+							break;
+						}
+					} else if (dir == "desc") {
+						if (Number(x.innerHTML) < Number(y.innerHTML)) {
+							// If so, mark as a switch and break the loop:
+							shouldSwitch = true;
+							break;
+						}
+					}
+				}
+				if (shouldSwitch) {
+					/* If a switch has been marked, make the switch
+					and mark that a switch has been done: */
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+					// Each time a switch is done, increase this count by 1:
+					switchcount ++;
+				} else {
+					/* If no switching has been done AND the direction is "asc",
+					set the direction to "desc" and run the while loop again. */
+					if (switchcount == 0 && dir == "asc") {
+						dir = "desc";
+						switching = true;
+					}
+				}
+			}
+		}
 
-      var table = document.getElementById('myTable');
-      var wrapper = table.parentNode;
-      var rowsInTable = table.rows.length;
-      var height = 0;
-      if (rowsInTable > maxRows) {
-          for (var i = 0; i < maxRows; i++) {
-              height += table.rows[i].clientHeight;
-          }
-          wrapper.style.height = height + "px";
-      }
-  }
-</script>
+		function makeTableScroll() {
+				// Constant retrieved from server-side via JSP
+				var maxRows = 10;
+
+				var table = document.getElementById('myTable');
+				var wrapper = table.parentNode;
+				var rowsInTable = table.rows.length;
+				var height = 0;
+				if (rowsInTable > maxRows) {
+						for (var i = 0; i < maxRows; i++) {
+								height += table.rows[i].clientHeight;
+						}
+						wrapper.style.height = height + "px";
+				}
+		}
+	</script>
 </html>
