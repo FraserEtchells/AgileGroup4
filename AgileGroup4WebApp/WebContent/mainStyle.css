@@ -1,0 +1,46 @@
+@charset "ISO-8859-1";
+
+body,html {
+  height: 100%;
+  margin: 0;
+}
+
+
+.bg{
+  background-image: url(images/abstractBlue.jpg);
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#oswaldFont div{
+  font-family: 'Oswald', sans-serif;
+}
+
+#title-block{
+  width: 100%;
+  height: 20%;
+  border: 1px blue;
+  padding-top: 15%;
+  text-align: center;
+
+}
+
+.section-basic{
+  height:20%;
+  width: 80%;
+  border: 1px black;
+}
+
+.section-box{
+ width: 33%
+ border: 1px black;
+}
