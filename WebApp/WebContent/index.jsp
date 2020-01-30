@@ -37,7 +37,7 @@
     <div id="oswaldFont">
       <!--Adds padding to the search bar-->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">Craneware Healthcare</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -47,18 +47,13 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link disabled" href="#">Log in</a>
       </li>
     </ul>
   </div>
 </nav>
 <br>
+
       <div class="row">
         <div class="col-sm">
           <!--Puts a margin to left of the filter-->
@@ -83,6 +78,7 @@
                     <input type="number" class="form-control" placeholder="1300000" name="maxPrice" min="0" max="1300000" id="maxPrice">
                   </div>
                 </div>
+                <br>
                 <div class="row">
                   <div class="col">
                     <label for="area">Location</label>
@@ -103,7 +99,7 @@
                   </div>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
               </form>
             </div>
           </div>
@@ -145,57 +141,218 @@
                     <td>2</td>
                   </tr>
                   <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
+                    <td>A871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV >96 HOURS W MCC</td>
+                    <td>HOUSTON METHODIST THE WOODLANDS HOSPITAL</td>
+                    <td>1070</td>
+                    <td>10</td>
+                    <td>11</td>
                   </tr>
                   <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
+                    <td>L037 - EXTRACRANIAL PROCEDURES W MCC</td>
+                    <td>SOUTHEAST ALABAMA MEDICAL CENTER</td>
+                    <td>100427</td>
+                    <td>25</td>
+                    <td>40</td>
                   </tr>
                   <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
+                    <td>Y163 - MAJOR CHEST PROCEDURES W MCC</td>
+                    <td>NEW TORK</td>
+                    <td>22</td>
+                    <td>1</td>
+                    <td>2</td>
                   </tr>
                   <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
+                    <td>A871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV >96 HOURS W MCC</td>
+                    <td>HOUSTON METHODIST THE WOODLANDS HOSPITAL</td>
+                    <td>1070</td>
+                    <td>10</td>
+                    <td>11</td>
                   </tr>
                   <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
+                    <td>L037 - EXTRACRANIAL PROCEDURES W MCC</td>
+                    <td>SOUTHEAST ALABAMA MEDICAL CENTER</td>
+                    <td>100427</td>
+                    <td>25</td>
+                    <td>40</td>
                   </tr>
                   <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
+                    <td>Y163 - MAJOR CHEST PROCEDURES W MCC</td>
+                    <td>NEW TORK</td>
+                    <td>22</td>
+                    <td>1</td>
+                    <td>2</td>
                   </tr>
                   <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
+                    <td>A871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV >96 HOURS W MCC</td>
+                    <td>HOUSTON METHODIST THE WOODLANDS HOSPITAL</td>
+                    <td>1070</td>
+                    <td>10</td>
+                    <td>11</td>
                   </tr>
+                  <tr>
+                    <td>L037 - EXTRACRANIAL PROCEDURES W MCC</td>
+                    <td>SOUTHEAST ALABAMA MEDICAL CENTER</td>
+                    <td>100427</td>
+                    <td>25</td>
+                    <td>40</td>
+                  </tr>
+                  <tr>
+                    <td>Y163 - MAJOR CHEST PROCEDURES W MCC</td>
+                    <td>NEW TORK</td>
+                    <td>22</td>
+                    <td>1</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>A871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV >96 HOURS W MCC</td>
+                    <td>HOUSTON METHODIST THE WOODLANDS HOSPITAL</td>
+                    <td>1070</td>
+                    <td>10</td>
+                    <td>11</td>
+                  </tr>
+                  <tr>
+                    <td>L037 - EXTRACRANIAL PROCEDURES W MCC</td>
+                    <td>SOUTHEAST ALABAMA MEDICAL CENTER</td>
+                    <td>100427</td>
+                    <td>25</td>
+                    <td>40</td>
+                  </tr>
+                  <tr>
+                    <td>Y163 - MAJOR CHEST PROCEDURES W MCC</td>
+                    <td>NEW TORK</td>
+                    <td>22</td>
+                    <td>1</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>A871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV >96 HOURS W MCC</td>
+                    <td>HOUSTON METHODIST THE WOODLANDS HOSPITAL</td>
+                    <td>1070</td>
+                    <td>10</td>
+                    <td>11</td>
+                  </tr>
+                  <tr>
+                    <td>L037 - EXTRACRANIAL PROCEDURES W MCC</td>
+                    <td>SOUTHEAST ALABAMA MEDICAL CENTER</td>
+                    <td>100427</td>
+                    <td>25</td>
+                    <td>40</td>
+                  </tr>
+                  <tr>
+                    <td>Y163 - MAJOR CHEST PROCEDURES W MCC</td>
+                    <td>NEW TORK</td>
+                    <td>22</td>
+                    <td>1</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>A871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV >96 HOURS W MCC</td>
+                    <td>HOUSTON METHODIST THE WOODLANDS HOSPITAL</td>
+                    <td>1070</td>
+                    <td>10</td>
+                    <td>11</td>
+                  </tr>
+                  <tr>
+                    <td>L037 - EXTRACRANIAL PROCEDURES W MCC</td>
+                    <td>SOUTHEAST ALABAMA MEDICAL CENTER</td>
+                    <td>100427</td>
+                    <td>25</td>
+                    <td>40</td>
+                  </tr>
+                  <tr>
+                    <td>Y163 - MAJOR CHEST PROCEDURES W MCC</td>
+                    <td>NEW TORK</td>
+                    <td>22</td>
+                    <td>1</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>A871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV >96 HOURS W MCC</td>
+                    <td>HOUSTON METHODIST THE WOODLANDS HOSPITAL</td>
+                    <td>1070</td>
+                    <td>10</td>
+                    <td>11</td>
+                  </tr>
+                  <tr>
+                    <td>L037 - EXTRACRANIAL PROCEDURES W MCC</td>
+                    <td>SOUTHEAST ALABAMA MEDICAL CENTER</td>
+                    <td>100427</td>
+                    <td>25</td>
+                    <td>40</td>
+                  </tr>
+                  <tr>
+                    <td>Y163 - MAJOR CHEST PROCEDURES W MCC</td>
+                    <td>NEW TORK</td>
+                    <td>22</td>
+                    <td>1</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>A871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV >96 HOURS W MCC</td>
+                    <td>HOUSTON METHODIST THE WOODLANDS HOSPITAL</td>
+                    <td>1070</td>
+                    <td>10</td>
+                    <td>11</td>
+                  </tr>
+                  <tr>
+                    <td>L037 - EXTRACRANIAL PROCEDURES W MCC</td>
+                    <td>SOUTHEAST ALABAMA MEDICAL CENTER</td>
+                    <td>100427</td>
+                    <td>25</td>
+                    <td>40</td>
+                  </tr>
+                  <tr>
+                    <td>Y163 - MAJOR CHEST PROCEDURES W MCC</td>
+                    <td>NEW TORK</td>
+                    <td>22</td>
+                    <td>1</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>A871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV >96 HOURS W MCC</td>
+                    <td>HOUSTON METHODIST THE WOODLANDS HOSPITAL</td>
+                    <td>1070</td>
+                    <td>10</td>
+                    <td>11</td>
+                  </tr>
+                  <tr>
+                    <td>L037 - EXTRACRANIAL PROCEDURES W MCC</td>
+                    <td>SOUTHEAST ALABAMA MEDICAL CENTER</td>
+                    <td>100427</td>
+                    <td>25</td>
+                    <td>40</td>
+                  </tr>
+                  <tr>
+                    <td>Y163 - MAJOR CHEST PROCEDURES W MCC</td>
+                    <td>NEW TORK</td>
+                    <td>22</td>
+                    <td>1</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>A871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV >96 HOURS W MCC</td>
+                    <td>HOUSTON METHODIST THE WOODLANDS HOSPITAL</td>
+                    <td>1070</td>
+                    <td>10</td>
+                    <td>11</td>
+                  </tr>
+                  <tr>
+                    <td>L037 - EXTRACRANIAL PROCEDURES W MCC</td>
+                    <td>SOUTHEAST ALABAMA MEDICAL CENTER</td>
+                    <td>100427</td>
+                    <td>25</td>
+                    <td>40</td>
+                  </tr>
+                  <tr>
+                    <td>Y163 - MAJOR CHEST PROCEDURES W MCC</td>
+                    <td>NEW TORK</td>
+                    <td>22</td>
+                    <td>1</td>
+                    <td>2</td>
+                  </tr>
+                  
                 </tbody>
               </table>
-
           </div>
         </div>
       </div>
