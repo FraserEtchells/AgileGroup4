@@ -38,7 +38,20 @@
   <div class="bg">
     <!--This applies the oswald font to the entire website-->
     <div id="oswaldFont">
-<br>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#">Craneware</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	<br>
       <div class="row">
         <div class="col-sm">
           <!--Puts a margin to left of the filter-->
@@ -52,6 +65,7 @@
               	  	<input class="form-control" type="search" placeholder="Procedure or Condition" name="search">
               	  </div>
               	</div>
+              	<br>
                 <div class="row">
                   <div class="col">
                     <label for="minPrice">Min. Price</label>
@@ -66,7 +80,7 @@
                 <div class="row">
                   <div class="col">
                     <label for="area">Location</label>
-                    <input type="text" class="form-control" placeholder="Location" id="area" name="location">
+                    <input type="search" class="form-control" placeholder="Location" id="area" name="location">
                   </div>
                   <div class="col">
                     <label for="distance">Distance</label>
@@ -82,9 +96,8 @@
                     </select>
                   </div>
                 </div>
-                <div style="text-align:center;">
-                <button type="submit" name="submit" class="block">Submit</button>
-                </div>
+                <br>
+                <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
               </form>
             </div>
           </div>
@@ -98,7 +111,7 @@
                   <tr>
                     <th scope="col" onclick="sortTable(0)">Procedure</th>
                     <th scope="col" onclick="sortTable(1)">Institute</th>
-                    <th scope="col" onclick="sortTableNumericaly(2)">Price</th>
+                    <th scope="col" onclick="sortTableNumericaly(2)">Average Price ($)</th>
                     <th scope="col" onclick="sortTableNumericaly(3)">Distance</th>
                     <th scope="col" onclick="sortTableNumericaly(4)">Rank</th>
                   </tr>
@@ -136,7 +149,7 @@
                 		String[] s = i.next();
                 		out.println("<tr>");
                 		out.println("<td>" + s[0] + " " + s[1] + "</td>"); 	//Proccedure
-                		out.println("<td>" + s[3] + "</td>");				//Institute
+                		out.println("<td>" + s[3] + "</td>");//Institute
                 		out.println("<td>" + s[10] + "</td>");				//Price
                 		out.println("<td>" + "Distance placeholder" + "</td>");				//Distance
                 		out.println("<td>" + "Rank placeholder" + "</td>");				//Rank
@@ -162,6 +175,9 @@
           </div>
         </div>
       </div>
+      <footer class="footer-dark bg-dark">
+      	&copy 2020 Copyright: Craneware
+      </footer>
     </div>
   </div>
 </body>
