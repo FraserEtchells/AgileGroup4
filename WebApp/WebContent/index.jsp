@@ -2,7 +2,8 @@
     pageEncoding="ISO-8859-1"
     import="test.Output"
     import="sql.SQLConnect"
-    import="java.util.LinkedList"%>
+    import="java.util.LinkedList"
+    import="java.util.Iterator"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +46,7 @@
             <div class="pad">
               <!--This is the Filter Form-->
               <!--TODO: add an action to the form-->
-              <form action="">
+              <form action="index.jsp">
               	<div class="row">
               	  <div class="col">
               	  	<input class="form-control" type="search" placeholder="Procedure or Condition" name="search">
@@ -58,7 +59,7 @@
                   </div>
                   <div class="col">
                     <label for="maxPrice">Max. Price</label>
-                    <input type="number" class="form-control" placeholder="1300000" name="maxPrice" min="0" max="1300000" id="maxPrice">
+                    <input type="number" class="form-control" placeholder="1000000" name="maxPrice" min="0" max="1000000" id="maxPrice">
                   </div>
                 </div>
                 <br>
@@ -82,7 +83,7 @@
                   </div>
                 </div>
                 <div style="text-align:center;">
-                <button type="submit" class="block">Submit</button>
+                <button type="submit" name="submit" class="block">Submit</button>
                 </div>
               </form>
             </div>
@@ -103,103 +104,59 @@
                   </tr>
                 </thead>
                 <%
+                String searchParam = "1";
+                String minPrice = "0";
+                String maxPrice = "1000000";
+                
+                if(request.getParameter("submit") != null)
+                {
+                	
+                	searchParam = request.getParameter("search");
+                	minPrice = request.getParameter("minPrice");
+                	maxPrice = request.getParameter("maxPrice");
+                	
+                }
+                
+                
+                
+                
                 try
                 {
-                	out.println("test1");
-                	String results = SQLConnect.run();
-                	out.println(results);
-                	out.println("test2");
                 	
-                	if(!results.isEmpty())
+                	LinkedList<String[]> results = SQLConnect.run(searchParam, minPrice, maxPrice);
+                	
+                	out.println("<tbody>");
+                	
+                	
+                	Iterator<String[]> i = results.iterator();
+                	
+                	while(i.hasNext())
                 	{
-                		out.println("test3");
-                		//String[] s = results.getFirst();
-                		out.println("test4");
-                		out.println(results);
+                		
+                		String[] s = i.next();
+                		out.println("<tr>");
+                		out.println("<td>" + s[0] + " " + s[1] + "</td>"); 	//Proccedure
+                		out.println("<td>" + s[3] + "</td>");				//Institute
+                		out.println("<td>" + s[10] + "</td>");				//Price
+                		out.println("<td>" + "Distance placeholder" + "</td>");				//Distance
+                		out.println("<td>" + "Rank placeholder" + "</td>");				//Rank
+                		out.println("</tr>");
                 	}
-                	out.println("test5");
+                	
+                	out.println("</tbody>");
+                	
+                	
                 }
                 catch(Exception e)
                 {
-                	out.println("error " + e.getMessage());
+                	out.println("error (" + e.getMessage() + ")");
                 }
                 
                 
                 
                 
                 %>
-                <tbody>
-                  <tr>
-                    <td>A871 - SEPTICEMIA OR SEVERE SEPSIS W/O MV >96 HOURS W MCC</td>
-                    <td>HOUSTON METHODIST THE WOODLANDS HOSPITAL</td>
-                    <td>1070</td>
-                    <td>10</td>
-                    <td>11</td>
-                  </tr>
-                  <tr>
-                    <td>L037 - EXTRACRANIAL PROCEDURES W MCC</td>
-                    <td>SOUTHEAST ALABAMA MEDICAL CENTER</td>
-                    <td>100427</td>
-                    <td>25</td>
-                    <td>40</td>
-                  </tr>
-                  <tr>
-                    <td>Y163 - MAJOR CHEST PROCEDURES W MCC</td>
-                    <td>NEW TORK</td>
-                    <td>22</td>
-                    <td>1</td>
-                    <td>2</td>
-                  </tr>
-                  <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>MARRIAGE</td>
-                    <td>UKRAINIAN PROSTITUTES</td>
-                    <td>100</td>
-                    <td>1000</td>
-                    <td>3</td>
-                  </tr>
-                </tbody>
+                
               </table>
 
           </div>

@@ -27,8 +27,8 @@ public class SQLConnect
 	
 		public static void main(String[] args)
 		{
-//			LinkedList<String[]> ll = run();
-//			System.out.println(ll.getFirst()[3]);
+			//LinkedList<String[]> ll = run("1");
+			//System.out.println(ll.getFirst()[3]);
 //			for(int i =0; i < ll.size(); i++)
 //			{
 //				String[] output = ll.get(i);
@@ -42,19 +42,44 @@ public class SQLConnect
 			
 		}
 		
-		public static String run()
+		public static LinkedList<String[]> run(String searchParam, String minPrice, String maxPrice)
 		{
-			System.out.println("echo");
-			String s = test();
-			//LinkedList<String[]> ll = getResults(1, 0, "0", "0", "0", "0", 0, 0);
-			return s;
+			try
+			{
+				if(connectToDatabase())
+				{
+					LinkedList<String[]> ll = getResults(searchParam, 0, "0", "0", searchParam, "0", minPrice, maxPrice);
+					return ll;
+				}
+				else
+				{
+					System.out.println("Couldnt connect");
+					return null;
+				}
+			}
+			catch(Exception e)
+			{
+				System.out.println(e.getMessage());
+				return null;
+			}
+			
+			//
 		}
 	
-		public static LinkedList<String[]> getResults(int procedureID, int providerID, String city, 
-				String state, String procedureDesc, String providerName, int minPrice, int maxPrice)
+		public static LinkedList<String[]> getResults(String procedureID, int providerID, String city, 
+				String state, String procedureDesc, String providerName, String minPrice, String maxPrice)
 		{
 		
-			
+			try
+			{
+				//See if procedureID is an int
+				int procIDInt = Integer.parseInt(procedureID);
+				procedureDesc = "0";
+			}
+			catch(Exception e)
+			{
+				procedureID = "0";
+			}
 			
 			
 			try
@@ -66,20 +91,37 @@ public class SQLConnect
 												+"', '"+maxPrice+"'");
 				System.out.println("test2");
 				rs.next();
-				LinkedList<String[]> resultArray = new LinkedList<String[]>();
-				while(rs.next())
-				{
-					String[] sArray = new String[5];
-					for(int i=1; i < 6; i++)
-					{
-						sArray[i-1] = rs.getString(i);
-						//System.out.println(sArray[i-1]);
-					}
-					resultArray.add(sArray);
+				LinkedList<String[]> results = new LinkedList<String[]>();
+				while(rs.next() && results.size() < 50) {
+					String[] temp = new String[11];
+					temp[0] = rs.getString(1);
+					temp[1] = rs.getString(2);
+					temp[3] = rs.getString(4);
+					temp[10] = rs.getString(7);
 					
+					results.add(temp);
 				}
 				
-				return resultArray;
+				
+            	
+//            	System.out.println("<tbody>");
+            	
+            	
+//            	Iterator<String[]> i = results.iterator();
+//            	
+//            	while(i.hasNext())
+//            	{
+//            		String[] s = i.next();
+//            		System.out.println("<td>" + s[0] + " " + s[1] + "</td>"); 	//Proccedure
+//            		System.out.println("<td>" + s[3] + "</td>");				//Institute
+//            		System.out.println("<td>" + s[10] + "</td>");				//Price
+//            		System.out.println("<td>" + "Distance placeholder" + "</td>");				//Distance
+//            		System.out.println("<td>" + "Rank placeholder" + "</td>");				//Rank
+//            	}
+//            	
+//            	System.out.println("</tbody>");
+				
+				return results;
 			}
 			catch(Exception e)
 			{
@@ -136,11 +178,11 @@ public class SQLConnect
 		}
 		
 		
-		public static String test() 
+		public static boolean connectToDatabase() 
 		{
 			try{
 				
-				Class.forName("com.mysql.cj.jdbc.Driver");
+				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 				
 				String conURL = "jdbc:sqlserver://agileprojecttest875413.database.windows.net:1433;"
 								+ "database=AgileProjectTest;"
@@ -155,33 +197,9 @@ public class SQLConnect
 				
 				
 				
-				
-//				MysqlDataSource ds = new MysqlDataSource();
-//				ds.setUser("agileprojectusertest");
-//				ds.setPassword("HopeThis1Works");
-//				ds.setServerName("agileprojecttest875413.database.windows.net");
-//				
-//				con = ds.getConnection();
-				
-				
-				Statement stmt=con.createStatement(); 
-				
-				ResultSet rs=stmt.executeQuery("select * from health");  
-				rs.next();
-				rs.next();
-				rs.next();
-				rs.next();
-				rs.next();
-				String s = rs.getString(1);
-				
-				//con.close();
-				
-//				System.out.println("connected");
-//				System.out.println(s);
-				
-				return s;
+				return true;
 			}
-			catch(Exception e) {return e.getMessage();}
+			catch(Exception e) {return false;}
 		}
 		
 	}
