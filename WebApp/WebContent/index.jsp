@@ -37,6 +37,7 @@
   <div class="bg">
     <!--This applies the oswald font to the entire website-->
     <div id="oswaldFont">
+<br>
       <div class="row">
         <div class="col-sm">
           <!--Puts a margin to left of the filter-->
@@ -60,6 +61,7 @@
                     <input type="number" class="form-control" placeholder="1300000" name="maxPrice" min="0" max="1300000" id="maxPrice">
                   </div>
                 </div>
+                <br>
                 <div class="row">
                   <div class="col">
                     <label for="area">Location</label>
@@ -79,7 +81,9 @@
                     </select>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div style="text-align:center;">
+                <button type="submit" class="block">Submit</button>
+                </div>
               </form>
             </div>
           </div>
