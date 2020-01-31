@@ -1,0 +1,49 @@
+body,html {
+  height: 100%;
+  margin: 0;
+  background-image: url(../images/naturalHealth.jpg);
+  max-width: 100%;
+  background-size: 100%;
+  overflow-x: hidden;
+  padding-bottom: 30px;
+}
+
+.bg{
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#oswaldFont div{
+  font-family: 'Oswald', sans-serif;
+  color: white;
+}
+
+.pad{
+  padding: 20px;
+}
+
+.filter{
+  margin-left: 20px;
+  background-color: rgba(18, 26, 78, 0.65);
+}
+
+.tableProp{
+  margin-right: 10px;
+  background-color: rgba(255, 255, 255, 0.52);
+}
+
+.footer-dark{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	color: white;
+}
