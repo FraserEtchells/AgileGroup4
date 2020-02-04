@@ -9,11 +9,11 @@
 </head>
 <body>
   <center><div>
-    <form action="updateDatabase.jsp" method="post" enctype="multipart/form-data"> Select CSV file to upload:
-      <input type="file" name="fileToUpload" id="fileToUpload">
-      <input class="styled" type="submit" value="Upload Dataset" name="submit">
+    <form action="upload" method="post" enctype="multipart/form-data">
+        <input type="text" name="description" />
+        <input type="file" name="file" />
+        <input style="style" type="submit" />
     </form>
   </div></center>
-
 </body>
 </html>

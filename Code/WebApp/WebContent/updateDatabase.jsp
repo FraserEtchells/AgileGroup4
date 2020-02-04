@@ -18,11 +18,11 @@
 <body>
 <%
 
-    if(request.getParameter("submit") != null)
-    {
-
-    	Collection<String> searchParam = request.getParts();
-		}
+    // if(request.getParameter("submit") != null)
+    // {
+    //
+    // 	Collection<String> searchParam = request.getParts();
+		// }
 
 
 %>
