@@ -14,10 +14,17 @@
 
 <body>
 
+
+
 <div id = "oswaldFont">
+
+		<div class="loginPageTop">
+		<a>Craneware - Administrator Login</a>
+		</div>
+		
 		<div class="row">
         	<div class="col-sm">
-        	    <div class="loginPad">
+        	    <div class="loginForm">
         	      <form action="admin.jsp">
         	        <div class="row">
         	          <div class="col">
