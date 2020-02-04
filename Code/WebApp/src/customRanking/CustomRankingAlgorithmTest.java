@@ -19,11 +19,32 @@ class CustomRankingAlgorithmTest {
 	@Test
 	void sigmoidFunctionTest() {
 		float result = 0.0f;
-		result = CustomRankingAlgorithm.sigmoidFunction(3);
+		float acceptable_error = 0.000001f;
+		
+		result = CustomRankingAlgorithm.sigmoidFunction(3.0f, 1.0f, 1.0f);
 		assertEquals(0.952574f, result, "Sigmoid function did not calculate y correctly");
 		
-		result = CustomRankingAlgorithm.sigmoidFunction(20);
-		assertNotEquals(0.3f, result, "Sigmoid function returned a correct result of y that it was not meant to");
+		//Price tests
+		
+		result = CustomRankingAlgorithm.sigmoidFunction(2000f, 1000f, 1000f);
+		assertEquals(0.007335f, result, acceptable_error, "Sigmoid function did not calculate y correctly");
+		
+		result = CustomRankingAlgorithm.sigmoidFunction(5000f, 1000f, 1000f);
+		assertEquals(0.129233f, result, acceptable_error, "Sigmoid function did not calculate y correctly");
+		
+		result = CustomRankingAlgorithm.sigmoidFunction(9000f, 1000f, 1000f);
+		assertEquals(0.890147f, result, acceptable_error, "Sigmoid function did not calculate y correctly");
+		
+		//Distance tests
+		
+		result = CustomRankingAlgorithm.sigmoidFunction(50f, 2000f, 200f);
+		assertEquals(0.000642f, result, acceptable_error, "Sigmoid function did not calculate y correctly");
+		
+		result = CustomRankingAlgorithm.sigmoidFunction(300f, 2000f, 200f);
+		assertEquals(0.002236f, result, acceptable_error, "Sigmoid function did not calculate y correctly");
+		
+		result = CustomRankingAlgorithm.sigmoidFunction(1000.0f, 2000f, 200f);
+		assertEquals(0.06908f, result, acceptable_error, "Sigmoid function did not calculate y correctly");
 	}
 	
 	@Test
