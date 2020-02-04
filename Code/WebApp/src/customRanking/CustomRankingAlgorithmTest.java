@@ -55,11 +55,14 @@ class CustomRankingAlgorithmTest {
 		float result = 0.0f;
 		float acceptable_error = 0.000001f;
 		
-		result = CustomRankingAlgorithm.getCustomRankValue(2000f, 300f);
-		assertEquals(0.645507, result, acceptable_error, "Custom Rank not calculated correctly");
+		result = CustomRankingAlgorithm.getCustomRankValue(2000f, 300f);	//0.996971 + 0.298349 /2 = 0.64766
+		assertEquals(0.64766f, result, acceptable_error, "Custom Rank not calculated correctly");
 		
-		result = CustomRankingAlgorithm.getCustomRankValue(7000f, 300f);
-		assertEquals(0.387652, result, acceptable_error, "Custom Rank not calculated correctly");
+		result = CustomRankingAlgorithm.getCustomRankValue(7000f, 300f);	//0.953419 + 0.298349 /2 = 0.625884
+		assertEquals(0.625884f, result, acceptable_error, "Custom Rank not calculated correctly");
+		
+		result = CustomRankingAlgorithm.getCustomRankValue(15000f, 50f);	//0.193789 + 0.01834 /2 = 0.1060645
+		assertEquals(0.1060645f, result, acceptable_error, "Custom Rank not calculated correctly");
 		
 		
 		
