@@ -34,10 +34,12 @@ public class CustomRankingAlgorithm {
 		float priceFactor = 0.0f;
 		float distanceFactor = 0.0f;
 		
-		priceFactor = 1 - sigmoidFunction(price, 1000f, 1800f);
+		
+		priceFactor = sigmoidFunction(price, 1000f, 1800f);
 		distanceFactor = sigmoidFunction(distance, 100f, 80f);
 		
-		rankValue = (priceFactor + distanceFactor) / 2;
+		//Invert rank so higher value is better
+		rankValue = 1 - ((priceFactor + distanceFactor) / 2);
 		
 		return rankValue;
 	}
