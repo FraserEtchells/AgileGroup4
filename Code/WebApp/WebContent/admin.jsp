@@ -5,7 +5,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin</title>
-
 <link rel="stylesheet" type="text/css" href="css/util.css">
 <link rel="stylesheet" type="text/css" href="css/inputform.css">
 <link rel="stylesheet" type="text/css" href="css/table.css">
@@ -14,11 +13,11 @@
 </head>
 
 <body>
+
 <div id = "oswaldFont">
 		<div class="row">
         	<div class="col-sm">
-        	    <div class="login-pad">
-        	      <!--TODO: add an action to the form-->
+        	    <div class="loginPad">
         	      <form action="admin.jsp">
         	        <div class="row">
         	          <div class="col">
