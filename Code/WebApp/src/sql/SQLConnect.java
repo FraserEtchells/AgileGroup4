@@ -27,17 +27,7 @@ public class SQLConnect
 	
 		public static void main(String[] args)
 		{
-			//LinkedList<String[]> ll = run("1");
-			//System.out.println(ll.getFirst()[3]);
-//			for(int i =0; i < ll.size(); i++)
-//			{
-//				String[] output = ll.get(i);
-//				for(int p = 0; p < 5; p++)
-//				{
-//					System.out.print(output[p] + " ");
-//				}
-//				System.out.println();
-//			}
+			run("1","0","400000");
 			
 			
 		}
@@ -101,25 +91,7 @@ public class SQLConnect
 					
 					results.add(temp);
 				}
-				
-				
-            	
-//            	System.out.println("<tbody>");
-            	
-            	
-//            	Iterator<String[]> i = results.iterator();
-//            	
-//            	while(i.hasNext())
-//            	{
-//            		String[] s = i.next();
-//            		System.out.println("<td>" + s[0] + " " + s[1] + "</td>"); 	//Proccedure
-//            		System.out.println("<td>" + s[3] + "</td>");				//Institute
-//            		System.out.println("<td>" + s[10] + "</td>");				//Price
-//            		System.out.println("<td>" + "Distance placeholder" + "</td>");				//Distance
-//            		System.out.println("<td>" + "Rank placeholder" + "</td>");				//Rank
-//            	}
-//            	
-//            	System.out.println("</tbody>");
+							
 				
 				return results;
 			}
@@ -128,19 +100,9 @@ public class SQLConnect
 				System.out.println("error " + e.getMessage());
 				return null;
 			}
-			
-			
-			
-			
-			
-			
-			
-		
+
 		}
-		
-		
-		
-		
+			
 		
 		public static String[][] search(String table, String condition)
 		{
@@ -191,12 +153,9 @@ public class SQLConnect
 								+ "encrypt=true;"
 								+ "trustServerCertificate=false;"
 								+ "loginTimeout=30;";
-				
-				
+								
 				con = DriverManager.getConnection(conURL);
-				
-				
-				
+												
 				return true;
 			}
 			catch(Exception e) {return false;}
