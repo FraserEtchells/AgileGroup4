@@ -20,7 +20,7 @@ class CustomRankingAlgorithmTest {
 	void sigmoidFunctionTest() {
 		float result = 0.0f;
 		result = CustomRankingAlgorithm.sigmoidFunction(3);
-		assertEquals(0.049787f, result, "Sigmoid function did not calculate y correctly");
+		assertEquals(0.952574f, result, "Sigmoid function did not calculate y correctly");
 		
 		result = CustomRankingAlgorithm.sigmoidFunction(20);
 		assertNotEquals(0.3f, result, "Sigmoid function returned a correct result of y that it was not meant to");
