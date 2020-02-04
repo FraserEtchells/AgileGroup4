@@ -16,5 +16,13 @@ public class CustomRankingAlgorithm {
 		return y;
 	}
 	
-	
+	public static float getCustomRankValue(float price, float distance)
+	{
+		float rankValue = -1.0f;
+		
+		
+		
+		
+		return rankValue;
+	}
 }

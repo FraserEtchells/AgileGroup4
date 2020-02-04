@@ -25,5 +25,13 @@ class CustomRankingAlgorithmTest {
 		result = CustomRankingAlgorithm.sigmoidFunction(20);
 		assertNotEquals(0.3f, result, "Sigmoid function returned a correct result of y that it was not meant to");
 	}
+	
+	@Test
+	void getCustomRankValueTest()
+	{
+		float result = 0.0f;
+		result = CustomRankingAlgorithm.getCustomRankValue(0.0f, 0.0f); //TODO update with values
+		fail("Still need to write test");
+	}
 
 }
