@@ -1,0 +1,8 @@
+Week 2:
+
+Day 1 - 3/2/2020
+Members Present: Michael (SM), Fraser, Patryk, Aditya, Tom, Josh
+Summary:
+- Before the meeting, we looked at feedback from last sprint concerning the client meeting and the work we had done.
+- We also looked at the product backlog, and created a new sprint backlog to work on, distributing tasks between members.
+- We agreed to move the meetings from 2pm to 11am, as the later time seemed to make the group less efficient
