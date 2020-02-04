@@ -158,7 +158,9 @@ public class SQLConnect
 												
 				return true;
 			}
-			catch(Exception e) {return false;}
+			catch(Exception e) {
+				System.out.print(e.getMessage());
+			return false;}
 		}
 		
 	}

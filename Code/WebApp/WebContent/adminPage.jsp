@@ -8,12 +8,12 @@
 <link rel="stylesheet" type="text/css" href="css/adminPage.css">
 </head>
 <body>
-<center> <div>
-  <!-- <div><button class="styled" type="button" onclick="">Add Procedure to Hospital</button><div>
-  <div><button class="styled" type="button" onclick="">Edit Procedure</button></div>
-  <div><button class="styled" form=""type="button" onclick="">Delete Procedure</button></div>
-  <div><button class="styled" form=""type="button" onclick="">Edit Hospital Details</button></div> -->
-  <div><button class="styled" form=""type="button" onclick="">Upload Dataset</button></div>
-</div></center>
+  <center><div>
+    <form action="updateDatabase.jsp" method="post" enctype="multipart/form-data"> Select CSV file to upload:
+      <input type="file" name="fileToUpload" id="fileToUpload">
+      <input class="styled" type="submit" value="Upload Dataset" name="submit">
+    </form>
+  </div></center>
+
 </body>
 </html>
