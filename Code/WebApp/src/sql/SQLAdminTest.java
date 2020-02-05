@@ -1,4 +1,6 @@
 package sql;
+import java.sql.*;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,7 +24,13 @@ class SQLAdminTest {
 	@Test
 	void testSQLConnection()
 	{
-		assertTrue(SQLAdmin.connectToDatabase("adminUser", "098AccessTheDatabase!"));
+		Connection testCon = SQLAdmin.connectToDatabase("agileprojecttestuser", "HopeThis1Works");
+		try {
+			assertTrue(testCon.isValid(0));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

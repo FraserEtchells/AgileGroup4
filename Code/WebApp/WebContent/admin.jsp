@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
-    import = "sql.SQLAdmin" %>
+    import = "sql.SQLAdmin"
+    import = "java.sql.*" %>
     
 <!DOCTYPE html>
 <html>
@@ -58,9 +59,10 @@
                 }
                 
                 try{
-                	if(SQLAdmin.connectToDatabase(username,password) == true)
+                	Connection con = SQLAdmin.connectToDatabase(username, password);
+                	if(con.isValid(0) == true)
                 	{
-                		out.println("Successfully connected to database");
+                		out.println("Success - Valid connection");
                 	}
                 
                 }

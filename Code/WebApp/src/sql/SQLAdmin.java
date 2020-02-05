@@ -29,7 +29,7 @@ public class SQLAdmin {
 //	}
 	
 
-	public static boolean connectToDatabase(String username, String password) 
+	public static Connection connectToDatabase(String username, String password) 
 	{
 		try{
 			
@@ -48,9 +48,9 @@ public class SQLAdmin {
 			
 			
 			
-			return true;
+			return con;
 		}
-		catch(Exception e) {System.out.print(e.getMessage());return false;}
+		catch(Exception e) {System.out.print(e.getMessage());return con;}
 	}
 	
 
