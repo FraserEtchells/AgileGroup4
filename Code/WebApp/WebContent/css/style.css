@@ -32,6 +32,7 @@ body,html {
 
 .filter{
   margin-left: 20px;
+  margin-right: 20px;
   background-color: rgba(18, 26, 78, 0.65);
 }
 
