@@ -47,7 +47,7 @@ map.addEventListener('drag',function(evt){
 */
 // Create the parameters for the geocoding request:
 var geocodingParams = {
-      searchText: 'New York'
+      searchText: 'Texas'
     };
 
 
@@ -73,8 +73,7 @@ var geocoder = platform.getGeocodingService();
 // Call the geocode method with the geocoding parameters,
 // the callback and an error callback function (called if a
 // communication error occurs):
-var temp = geocoder.geocode(geocodingParams, onResult, function(e) {
+geocoder.geocode(geocodingParams, onResult, function(e) {
   alert(e);
 });
 
-alert(temp);
