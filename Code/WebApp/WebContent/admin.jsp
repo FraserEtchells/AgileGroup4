@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"
+    import = "sql.SQLAdmin" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,9 +55,18 @@
                 	username = request.getParameter("username");
                 	password = request.getParameter("password");
                 	
-                	 out.println(username);
-                     out.println(password);
-
+                }
+                
+                try{
+                	if(SQLAdmin.connectToDatabase(username,password) == true)
+                	{
+                		out.println("Successfully connected to database");
+                	}
+                
+                }
+                catch(Exception e)
+                {
+                	out.println("error (" + e.getMessage() + ")");
                 }
 %>
 
