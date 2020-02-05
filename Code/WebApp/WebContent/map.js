@@ -1,9 +1,9 @@
-var api = new H.service.Platform({
-  'apikey': '{xzADpXW7FDuY_UZUfXACnvhd1mlSWTHJf1oo4-Q1h50}'
+var platform = new H.service.Platform({
+  apikey: '10UmFtAGly-G0AEFjDot_PuKKz4nsfHnOryzfp-EYzg'
 });
 
 // Obtain the default map types from the platform object:
-var defaultLayers = api.createDefaultLayers();
+var defaultLayers = platform.createDefaultLayers();
 
 // Instantiate (and display) a map object:
 var map = new H.Map(
@@ -31,9 +31,10 @@ var icon = new H.map.Icon(svgMarkup),
   map.addObject(marker);
 
 var mapEvents = new H.mapevents.MapEvents(map);
+new H.mapevents.Behavior(mapEvents);
 
 var ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
-
+/*
 var bubble = new H.ui.InfoBubble({lat: 39, lng: -103},{
   content:'<p>Hospital</p>'
 });
@@ -43,3 +44,37 @@ ui.addBubble(bubble);
 map.addEventListener('drag',function(evt){
   alert(evt);
 });
+*/
+// Create the parameters for the geocoding request:
+var geocodingParams = {
+      searchText: 'New York'
+    };
+
+
+// Define a callback function to process the geocoding response:
+var onResult = function(result) {
+  var locations = result.Response.View[0].Result,
+      position,
+      marker;
+  // Add a marker for each location found
+  for (i = 0;  i < locations.length; i++) {
+    position = {
+      lat: locations[i].Location.DisplayPosition.Latitude,
+      lng: locations[i].Location.DisplayPosition.Longitude
+    };
+    marker = new H.map.Marker(position, {icon: icon});
+    map.addObject(marker);
+  }
+};
+
+// Get an instance of the geocoding service:
+var geocoder = platform.getGeocodingService();
+
+// Call the geocode method with the geocoding parameters,
+// the callback and an error callback function (called if a
+// communication error occurs):
+var temp = geocoder.geocode(geocodingParams, onResult, function(e) {
+  alert(e);
+});
+
+alert(temp);
