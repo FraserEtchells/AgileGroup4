@@ -14,3 +14,14 @@ Summary:
 - Fraser looked at the admin login system
 - Aditya worked on implementing the map into the website
 - Michael looked at the database component of the admin login system.
+
+Day 3 - 5/2/2020
+Members Present: Fraser, Patryk, Aditya, Tom, Josh
+Members Absent: Michael (Work),
+Summary:
+- Fraser worked on CSS for admin page, will look at accessing DB w/ admin privileges.
+- Adi worked on map, can now zoom, display icons; having problems with panning; will continue to work on map.
+- Josh worked on html
+- Tom worked on html/css. Split index page; will work on maps stuff & misc
+- Patryk worked on updating system for admin page. Will continue to work on that.
+- Michael worked on the database admin page, will work on stored procedures and distances between locations.
