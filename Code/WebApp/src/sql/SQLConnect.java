@@ -103,6 +103,21 @@ public class SQLConnect
 
 		}
 			
+		public static void runQuery(String query) {
+		
+			try
+			{
+				connectToDatabase();
+				Statement stmt = con.createStatement();
+				stmt.executeQuery(query);
+
+			}
+			catch(Exception e)
+			{
+				System.out.println("error " + e.getMessage());
+			}
+
+		}
 		
 		public static String[][] search(String table, String condition)
 		{

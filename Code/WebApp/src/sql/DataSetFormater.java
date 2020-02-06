@@ -15,8 +15,7 @@ public class DataSetFormater {
 	public String[] separateRow(String row) {
 		
 		// Split row
-		String[] splitRow = row.split(","); 
-		
+		String[] splitRow = row.split(","); 		
 		String[] temp = splitRow[0].split(" -");
 		
 		String [] combined = new String[11];
@@ -26,15 +25,46 @@ public class DataSetFormater {
 		for (int i = 2;i < 10;i++) {
 			
 			combined[i] = splitRow[i-1];
+
 		}
 		
 		// Get average procedure payment
 		String[] temp2 = row.split(Pattern.quote("$"));
-		combined[10] = temp2[2].substring(0, temp2[2].length() - 3);
-		
-		return combined;
-		
+		String[] temp3 = row.split("\"");
+
+			
+		// If address contains ,
+		String firstCharacater = combined[3].substring(0, 1);
+		if(firstCharacater.contains("\""))
+		{			
+			combined[3] = temp3[1];
+			for (int i = 4;i < 10;i++) {
 				
+				combined[i] = splitRow[i];
+
+			}
+		}
+		
+		// If address contains ,
+		firstCharacater = combined[4].substring(0, 1);
+		if(firstCharacater.contains("\""))
+		{	
+			if(temp3.length == 3) {
+				combined[4] = temp3[2];
+			}else {
+				combined[4] = temp3[1];
+			}
+			for (int i = 5;i < 10;i++) {
+				
+				combined[i] = splitRow[i];
+
+			}
+		}
+			
+		combined[10] = temp2[2].substring(0, temp2[2].length() - 3);
+
+		return combined;
+					
 	}
 	
 	/*
@@ -219,9 +249,47 @@ public class DataSetFormater {
 		
 	}
 	
+	public boolean uploadData(String data) {
+		
+		String[][] processedData = processData(data);
+		LinkedList<String[]> hospitals = getHospitals(processedData);
+//		//Upload hospitals
+//		for(String[] str: hospitals)
+//		{
+//			String statement = "EXEC addProvider" + " '" + str[0] + "', '" + str[1] +  "', '" + str[2] +  "', '" + str[3] +  "', '" + str[4] +  "', '" + str[5] +  "', '" + str[6] + "'";
+//			//System.out.println(statement);
+//			SQLConnect.runQuery(statement);
+//
+//		}
+		
+		//upload porocedures
+		LinkedList<String[]> procedures = getProcedures(processedData);
+		//Upload hospitals
+		for(String[] str: procedures)
+		{
+			String statement = "EXEC addProcedure" + " '" + str[0] + "', '" + str[1]+ "'";
+			//System.out.println(statement);
+			SQLConnect.runQuery(statement);
+
+		}
+//		// pp
+//		LinkedList<String[]> ppData = getProcedureToProviders(processedData);
+//		//Upload hospitals
+//		for(String[] str: ppData)
+//		{
+//			String statement = "EXEC addTreatment" + " '" + str[0] + "', '" + str[1] +  "', '" + str[2] +  "', '" + str[3] +  "'";
+//			//System.out.println(statement);
+//			SQLConnect.runQuery(statement);
+//
+//		}
+		
+		return true;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		DataSetFormater n = new DataSetFormater();
+		n.separateRow("001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,040114,BAPTIST HEALTH MEDICAL CENTER-LITTLE ROCK,\"9601 INTERSTATE 630, EXIT 7\",LITTLE ROCK,AR,72205,AR - Little Rock,33,\"$711,472.00\",\"$180,315.55\",\"$145,192.61\"");
 	}
 
 }

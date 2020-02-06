@@ -1,6 +1,7 @@
 package Tests;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 import org.junit.jupiter.api.Test;
@@ -9,16 +10,16 @@ import sql.DataSetFormater;
 
 class DataSetFormaterTest {
 
-	public String testData = "001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,10033,UNIVERSITY OF ALABAMA HOSPITAL,619 SOUTH 19TH STREET,BIRMINGHAM,AL,35233,AL - Birmingham,13,\"$1,016,806.46\",\"$296,937.00\",\"$150,139.69\"\r\n" +
-			"001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,30103,MAYO CLINIC HOSPITAL,5777 EAST MAYO BOULEVARD,PHOENIX,AZ,85054,AZ - Phoenix,26,\"$443,387.54\",\"$215,059.54\",\"$163,889.31\"\r\n" +
-			"001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,40114,BAPTIST HEALTH MEDICAL CENTER-LITTLE ROCK,\"9601 INTERSTATE 630, EXIT 7\",LITTLE ROCK,AR,72205,AR - Little Rock,33,\"$711,472.00\",\"$180,315.55\",\"$145,192.61\"\r\n" +
-			"001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50025,UC SAN DIEGO HEALTH HILLCREST - HILLCREST MED CTR,200 WEST ARBOR DRIVE,SAN DIEGO,CA,92103,CA - San Diego,17,\"$796,343.82\",\"$299,244.41\",\"$270,131.59\"\r\n" +
-			"001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50100,SHARP MEMORIAL HOSPITAL,7901 FROST ST,SAN DIEGO,CA,92123,CA - San Diego,13,\"$1,434,651.46\",\"$239,537.46\",\"$215,205.00\"\r\n" +
-			"001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50108,\"SUTTER MEDICAL CENTER, SACRAMENTO\",2825 CAPITOL AVENUE,SACRAMENTO,CA,95816,CA - Sacramento,11,\"$846,688.27\",\"$259,930.18\",\"$257,317.55\"\r\n" +
-			"001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50262,RONALD REAGAN U C L A MEDICAL CENTER,757 WESTWOOD PLAZA,LOS ANGELES,CA,90095,CA - Los Angeles,22,\"$1,028,341.68\",\"$369,632.86\",\"$340,588.50\"\r\n" +
-			"001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50441,STANFORD HEALTH CARE,300 PASTEUR DRIVE,STANFORD,CA,94305,CA - San Mateo County,29,\"$3,104,374.28\",\"$492,689.79\",\"$469,167.03\"\r\n" +
-			"001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50454,UCSF MEDICAL CENTER,\"505 PARNASSUS AVE, BOX 0296\",SAN FRANCISCO,CA,94143,CA - San Francisco,18,\"$1,386,713.00\",\"$346,280.83\",\"$333,697.67\"\r\n" +
-			"001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50625,CEDARS-SINAI MEDICAL CENTER,8700 BEVERLY BLVD,LOS ANGELES,CA,90048,CA - Los Angeles,47,\"$2,868,377.13\",\"$361,621.11\",\"$345,847.51\"";
+	public String testData = "002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,10033,UNIVERSITY OF ALABAMA HOSPITAL,619 SOUTH 19TH STREET,BIRMINGHAM,AL,35233,AL - Birmingham,13,\"$1,016,806.46\",\"$296,937.00\",\"$150,139.69\"\r\n" +
+			"002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,30103,MAYO CLINIC HOSPITAL,5777 EAST MAYO BOULEVARD,PHOENIX,AZ,85054,AZ - Phoenix,26,\"$443,387.54\",\"$215,059.54\",\"$163,889.31\"\r\n" +
+			"002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,40114,BAPTIST HEALTH MEDICAL CENTER-LITTLE ROCK,\"9601 INTERSTATE 630, EXIT 7\",LITTLE ROCK,AR,72205,AR - Little Rock,33,\"$711,472.00\",\"$180,315.55\",\"$145,192.61\"\r\n" +
+			"002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50025,UC SAN DIEGO HEALTH HILLCREST - HILLCREST MED CTR,200 WEST ARBOR DRIVE,SAN DIEGO,CA,92103,CA - San Diego,17,\"$796,343.82\",\"$299,244.41\",\"$270,131.59\"\r\n" +
+			"002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50100,SHARP MEMORIAL HOSPITAL,7901 FROST ST,SAN DIEGO,CA,92123,CA - San Diego,13,\"$1,434,651.46\",\"$239,537.46\",\"$215,205.00\"\r\n" +
+			"002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50108,\"SUTTER MEDICAL CENTER, SACRAMENTO\",2825 CAPITOL AVENUE,SACRAMENTO,CA,95816,CA - Sacramento,11,\"$846,688.27\",\"$259,930.18\",\"$257,317.55\"\r\n" +
+			"002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50262,RONALD REAGAN U C L A MEDICAL CENTER,757 WESTWOOD PLAZA,LOS ANGELES,CA,90095,CA - Los Angeles,22,\"$1,028,341.68\",\"$369,632.86\",\"$340,588.50\"\r\n" +
+			"002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50441,STANFORD HEALTH CARE,300 PASTEUR DRIVE,STANFORD,CA,94305,CA - San Mateo County,29,\"$3,104,374.28\",\"$492,689.79\",\"$469,167.03\"\r\n" +
+			"002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50454,UCSF MEDICAL CENTER,\"505 PARNASSUS AVE, BOX 0296\",SAN FRANCISCO,CA,94143,CA - San Francisco,18,\"$1,386,713.00\",\"$346,280.83\",\"$333,697.67\"\r\n" +
+			"002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50625,CEDARS-SINAI MEDICAL CENTER,8700 BEVERLY BLVD,LOS ANGELES,CA,90048,CA - Los Angeles,47,\"$2,868,377.13\",\"$361,621.11\",\"$345,847.51\"";
 
 	@Test
 	void separateColumTest() {
@@ -68,6 +69,7 @@ class DataSetFormaterTest {
 		assertEquals("35233",							hospitalData[5], "Didnt get hospital Zip Code");
 		assertEquals("AL - Birmingham",					hospitalData[6], "Didnt get hospital HRR");
 
+	
 	}
 	
 	@Test
@@ -76,6 +78,8 @@ class DataSetFormaterTest {
 		String[][] processData = temp.processData(testData);
 		LinkedList<String[]> hospitals = temp.getHospitals(processData);		
 		assertEquals(10,hospitals.size(), "Didnt get all hospitals");
+		System.out.println("HOSPITAL DATA");
+		System.out.println(Arrays.toString(hospitals.getFirst()));
 
 	}
 	
@@ -97,6 +101,8 @@ class DataSetFormaterTest {
 		LinkedList<String[]> procedures = temp.getProcedures(processData);	
 		
 		assertEquals(1,	procedures.size(), "Didnt get all procedures");
+		System.out.println("Procedure data ");
+		System.out.println(Arrays.toString(procedures.getFirst()));
 
 	}
 	
@@ -130,8 +136,21 @@ class DataSetFormaterTest {
 		assertEquals("50625",	ppData.getLast()[1], "Didnt get all procedures");
 		assertEquals("47",	ppData.getLast()[2], "Didnt get all procedures");
 		assertEquals("361,621.11",	ppData.getLast()[3], "Didnt get all procedures");
+		
+		System.out.println("PP data ");
+		System.out.println(Arrays.toString(ppData.getFirst()));
 
 
 	}
 
+	@Test
+	void uploadTest() {
+		DataSetFormater temp = new DataSetFormater();
+		temp.uploadData(testData);
+		
+		
+		//GET HOSPITALS
+
+
+	}
 }
