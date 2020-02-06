@@ -28,7 +28,7 @@
 		<div class="row">
         	<div class="col-sm">
         	    <div class="loginForm">
-        	      <form action="admin.jsp">
+        	      <form action="admin.jsp" method="POST">
         	        <div class="row">
         	          <div class="col">
         	            <label for="username">Username</label>
@@ -48,6 +48,9 @@
 </div>
 
 <%
+
+				Connection con = null;
+        	    
                 String username = " ";
                 String password = " ";
                 
@@ -57,16 +60,19 @@
                 	password = request.getParameter("password");
                 	
                 	try{
-                    	Connection con = SQLAdmin.connectToDatabase(username, password);
-                    	if(con.isValid(0) == true)
+                    	con = SQLAdmin.connectToDatabase(username, password);
+                    	
+                    	if(con.isValid(4) == true)
                     	{
                     		out.println("Success - Valid connection");
                     		  Cookie validUser = new Cookie("validUser","true");
-                    		  response.addCookie( validUser);
-                    		  //String redirectURL = request.getAttribute("javax.servlet.forward.request_uri").toString();
-                    		 // out.println(redirectURL);
-                    		 // response.sendRedirect("");
-                    		 out.println("<script>window.location.href='index.jsp'</script>");
+                    		  Cookie userCookie =  new Cookie("username", username);
+                    		  Cookie passwordCookie = new Cookie("password", password);
+                    		  response.addCookie (validUser);
+                    		  response.addCookie (userCookie);
+                    		  response.addCookie (passwordCookie);
+                    		  
+                    		 out.println("<script>window.location.href='testRedirect.jsp'</script>");
                     	}
                     
                     }
