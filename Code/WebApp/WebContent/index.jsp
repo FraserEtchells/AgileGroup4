@@ -150,17 +150,30 @@
                 try
                 {
                 	
+                	//Holds coords for distance
+                	out.println("<div id=\"p0\" style=\"display:none;\">1</div>");
+                    out.println("<div id=\"startLat\" style=\"display:none;\"></div>");
+                    out.println("<div id=\"startLng\" style=\"display:none;\"></div>");
+                    out.println("<div id=\"p3\" style=\"display:none;\"></div>");
+                    
+                    %>
+                    <script type="text/javascript">
+                    //Set location
+                    convertAddressToCoords("New York", true);
+                    </script>
+                    <% 
+                	
                 	LinkedList<String[]> results = SQLConnect.run(searchParam, minPrice, maxPrice);
                 	
                 	out.println("<tbody>");
                 	
                 	
                 	Iterator<String[]> i = results.iterator();
-                	int count = 0;
+                	int count = 1;
                 	
                 	while(i.hasNext())
                 	{
-                		count++;
+                		
                 		String[] s = i.next();
                 		out.println("<tr id=\"row" + count + "\">");
                       out.println("<td id=\"address" + count + "\" style=\"display:none;\">" + '"' + s[3] + ", "+ s[4]  + ", " + s[5] + '"' + "</td>");       //Rank
@@ -168,30 +181,21 @@
                 		out.println("<td>" + s[3] + "</td>");//Institute
                 		out.println("<td>" + s[6] + "</td>");				//Price
                     out.println("<td id=\"distance" + count + "\">" + "</td>");
-                	//Holds coords for distance
-                    out.println("<div id=\"p0\" style=\"display:none;\"></div>");
-                    out.println("<div id=\"p1\" style=\"display:none;\"></div>");
-                    out.println("<div id=\"p2\" style=\"display:none;\"></div>");
-                    out.println("<div id=\"p3\" style=\"display:none;\"></div>");
+                	
+                    
                    
 		%>
 		<script type="text/javascript">
-                    convertAddressToCoords(document.getElementById(<% out.print("\"address" + count + "\"");%>).innerHTML);
-                    
-                    var p0 = document.getElementById(<% out.print("\"p0\"");%>).innerHTML
-                    var p1 = document.getElementById(<% out.print("\"p1\"");%>).innerHTML
-                    
-                    //alert("p0 = " + p0);
-                    convertAddressToCoords("New York");
-                    
-                    var p2 = document.getElementById(<% out.print("\"p2\"");%>).innerHTML
-                    var p3 = document.getElementById(<% out.print("\"p3\"");%>).innerHTML
+                    convertAddressToCoords(document.getElementById(<% out.print("\"address" + count + "\"");%>).innerHTML, false);
                     
                     
-                    var distance = haversine(p0, p1, p2, p3);
-        
-                    document.getElementById(<% out.print("\"distance" + count + "\"");%>).innerHTML = distance;
-                    //print into distance
+                    
+                    alert("p0 = " + p0);
+                    
+                    //alert(p0);
+                    
+                    
+                    
                     
         </script>
 		<%
@@ -218,7 +222,12 @@
                 		
                 		</script>
                 		<%
+                		count++;
                 	}
+                	
+                	//loop
+                	
+                	
                 	
                 	out.println("</tbody>");
                 	

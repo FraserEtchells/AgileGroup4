@@ -125,11 +125,42 @@ var getCoords = function(result) {
       position,
       marker;
 
-  document.getElementById("p0").innerHTML = locations[0].Location.DisplayPosition.Latitude;
-  document.getElementById("p1").innerHTML = locations[0].Location.DisplayPosition.Longitude;
+  var startLat = document.getElementById("startLat").innerHTML;
+  var startLng = document.getElementById("startLng").innerHTML;
   
+  alert("long - " + locations[0].Location.DisplayPosition.Latitude);
+  
+  	var count = parseInt(document.getElementById("p0").innerHTML, 10);
+  
+	  //document.getElementById("p0").innerHTML = locations[0].Location.DisplayPosition.Latitude;
+	  //document.getElementById("p1").innerHTML = locations[0].Location.DisplayPosition.Longitude;
+	  
+  	var idDist = "distance" + count;
+  	alert("id = " + idDist);
+  	document.getElementById(idDist).innerHTML = haversine(startLat,startLng,locations[0].Location.DisplayPosition.Latitude,locations[0].Location.DisplayPosition.Longitude);
+  	count = count + 1;
+  	document.getElementById("p0").innerHTML = count;
  
 }
+
+var getCoordsForSetLocation = function(result) {
+
+	  var locations = result.Response.View[0].Result,
+	      position,
+	      marker;
+
+	  
+	  alert("long - " + locations[0].Location.DisplayPosition.Latitude);
+	  
+	  
+	  
+		  document.getElementById("startLat").innerHTML = locations[0].Location.DisplayPosition.Latitude;
+		  document.getElementById("startLng").innerHTML = locations[0].Location.DisplayPosition.Longitude;
+		  
+	  
+	  
+	 
+	}
 
 
 
@@ -150,7 +181,7 @@ function addLocationToMap(address) {
 
 function zoomToLocation(address) {
 
-geocodingParams = {searchText: address, country: "USA"};
+geocodingParams = {searchText: address};
 
 geocoder.geocode(geocodingParams, moveMap, function(e) {
 alert(e);
@@ -158,13 +189,22 @@ alert(e);
 }
 
 
-function convertAddressToCoords(address) {
+function convertAddressToCoords(address, setLocation) {
 
+	alert(address);
 geocodingParams = {searchText: address, country: "USA"};
-
-geocoder.geocode(geocodingParams, getCoords, function(e) {
-alert(e);
-});
+if(setLocation)
+	{
+	geocoder.geocode(geocodingParams, getCoordsForSetLocation, function(e) {
+		alert(e);
+		});
+	}
+else
+	{
+	geocoder.geocode(geocodingParams, getCoords, function(e) {
+		alert(e);
+		});
+	}
 
 }
 
