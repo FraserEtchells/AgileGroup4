@@ -156,17 +156,19 @@
                 	
                 	
                 	Iterator<String[]> i = results.iterator();
+                	int count = 0;
                 	
                 	while(i.hasNext())
                 	{
-                		
+                		count++;
                 		String[] s = i.next();
-                		out.println("<tr>");
+                		out.println("<tr id=\"row" + count + "\">");
                 		out.println("<td>" + s[0] + " " + s[1] + "</td>"); 	//Proccedure
                 		out.println("<td>" + s[3] + "</td>");//Institute
                 		out.println("<td>" + s[6] + "</td>");				//Price
                 		out.println("<td>" + "Distance placeholder" + "</td>");				//Distance
                 		out.println("<td>" + "Rank placeholder" + "</td>");				//Rank
+                    	out.println("<td id=\"address" + count + "\" style=\"display:none;\">" + '"' + s[3] + ", "+ s[4]  + ", " + s[5] + '"' + "</td>");       //Rank
                 		out.println("</tr>");
                 		
                 		
@@ -175,13 +177,25 @@
                 		<script type="text/javascript">
                 		var address = <% out.print('"' + s[3] + ", "+ s[4]  + ", " + s[5] + '"');%>;
                 		addLocationToMap(address);
+                		
+                		//https://stackoverflow.com/questions/1207939/adding-an-onclick-event-to-a-table-row
+                		
+                		var row = document.getElementById(<% out.print("\"row" + count + "\"");%>);
+                		var clickHandler = function(row) {
+                			return function() {
+                				zoomToLocation(document.getElementById(<% out.print("\"address" + count + "\"");%>).innerHTML);
+                			}
+                		}
+                		row.onclick = clickHandler(row);
+                		
+                		
                 		</script>
                 		<%
                 	}
                 	
                 	out.println("</tbody>");
                 	
-                	
+               	
                 }
                 catch(Exception e)
                 {

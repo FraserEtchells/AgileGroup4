@@ -6,7 +6,7 @@ var platform = new H.service.Platform({
 var defaultLayers = platform.createDefaultLayers();
 
 // Instantiate (and display) a map object:
-var map = new H.Map(document.getElementById('mapContainer'), defaultLayers.vector.normal.map, {center: { lat: 39, lng: -104 }, zoom: 3.6 });
+var map = new H.Map(document.getElementById('mapContainer'), defaultLayers.vector.normal.map, {center: { lat: 39, lng: -104 }, zoom: 3.6, pixelRatio: window.devicePixelRatio || 1 });
 
 var svgMarkup = '<svg width="24" height="24" ' +
         'xmlns="http://www.w3.org/2000/svg">' +
@@ -46,14 +46,52 @@ var onResult = function(result) {
       position,
       marker;
   // Add a marker for each location found
-  for (i = 0;  i < locations.length; i++) {
-    position = {
-      lat: locations[i].Location.DisplayPosition.Latitude,
-      lng: locations[i].Location.DisplayPosition.Longitude
-    };
-    marker = new H.map.Marker(position, {icon: icon});
-    map.addObject(marker);
-  }
+//  for (i = 0;  i < locations.length; i++) {
+//    position = {
+//      lat: locations[i].Location.DisplayPosition.Latitude,
+//      lng: locations[i].Location.DisplayPosition.Longitude
+//    };
+//    marker = new H.map.Marker(position, {icon: icon});
+//    map.addObject(marker);
+//  }
+  
+  position = {
+	      lat: locations[0].Location.DisplayPosition.Latitude,
+	      lng: locations[0].Location.DisplayPosition.Longitude
+	    };
+	    
+  marker = new H.map.Marker(position, {icon: icon});
+  
+	    map.addObject(marker);
+  
+      
+  
+};
+
+var moveMap = function(result) {
+  var locations = result.Response.View[0].Result,
+      position,
+      marker;
+  
+  // Add a marker for each location found
+//  for (i = 0;  i < locations.length; i++) {
+//    position = {
+//      lat: locations[i].Location.DisplayPosition.Latitude,
+//      lng: locations[i].Location.DisplayPosition.Longitude
+//    };
+//    marker = new H.map.Marker(position, {icon: icon});
+//    map.addObject(marker);
+//  }
+  
+  position = {
+        lat: locations[0].Location.DisplayPosition.Latitude,
+        lng: locations[0].Location.DisplayPosition.Longitude
+      };
+      alert(locations[0].Location.DisplayPosition.Latitude);
+      alert(locations[0].Location.DisplayPosition.Longitude);
+      map.setZoom(4);
+      map.setCenter({lat:locations[0].Location.DisplayPosition.Latitude, lng:locations[0].Location.DisplayPosition.Longitude});
+  
 };
 
 // Get an instance of the geocoding service:
@@ -64,7 +102,20 @@ var geocoder = platform.getGeocodingService();
 // communication error occurs):
 function addLocationToMap(address) {
   geocodingParams = {searchText: address, country: "USA"};
+  
   geocoder.geocode(geocodingParams, onResult, function(e) {
   alert(e);
 });
 }
+
+function zoomToLocation(address) {
+
+geocodingParams = {searchText: address, country: "USA"};
+  
+geocoder.geocode(geocodingParams, moveMap, function(e) {
+alert(e);
+});
+}
+
+
+
