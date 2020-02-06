@@ -1,3 +1,25 @@
+function toRadians(x){
+  return x * Math.PI/180;
+};
+
+//This function calculates the distance between 2 coordinates.
+function haversine(lat1,lon1,lat2,lon2)
+{
+  //Calculating half of the change in distance between the points.
+  var halfLon = toRadians((lat1 - lat2))/2;
+  var halfLat = toRadians((lon1 - lon2))/2;
+  lat1 = toRadians(lat1);
+  lat2 = toRadians(lat2);
+  //Earth's Radius in kilometers
+  var earthRad = 6371;
+  //Calculating the
+  var a = Math.sin(halfLat) * Math.sin(halfLat) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(halfLon) * Math.sin(halfLon);
+  var angularDist = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return earthRad * angularDist;
+};
+
+haversine(38.39,-89.35,32.1,-101.34);
+
 var api = new H.service.Platform({
   apikey: '10UmFtAGly-G0AEFjDot_PuKKz4nsfHnOryzfp-EYzg'
 });
@@ -51,7 +73,8 @@ var onResult = function(result) {
       position,
       marker;
   // Add a marker for each location found
-  for (i = 0;  i < locations.length; i++) {
+  for (i = 0; i < locations.length; i++) {
+    console.log("Latitude: " + locations[i].Location.DisplayPosition.Latitude + "\nLongitude: " + locations[i].Location.DisplayPosition.Longitude);
     position = {
       lat: locations[i].Location.DisplayPosition.Latitude,
       lng: locations[i].Location.DisplayPosition.Longitude
