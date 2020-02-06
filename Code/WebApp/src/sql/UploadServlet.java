@@ -34,7 +34,12 @@ public class UploadServlet extends HttpServlet {
 	    }
 	    // StandardCharsets.UTF_8.name() > JDK 7
 	    DataSetFormater n = new DataSetFormater();
-	    String[] a = n.separateFile(result.toString("UTF-8"));
-	    System.out.print("SIZE: " + a.length);
+	    DataSetFormater upload = new DataSetFormater();
+	    System.out.print(result.toString("UTF-8"));
+	    upload.uploadData(result.toString("UTF-8"));
+//	    String[] a = n.separateFile(result.toString("UTF-8"));
+//	    System.out.print("SIZE: " + a.length);
+	    
+	    
 	}
 }
