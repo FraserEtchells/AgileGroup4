@@ -91,8 +91,6 @@ var onResult = function(result) {
 
 	    map.addObject(marker);
 
-
-
 };
 
 var moveMap = function(result) {
@@ -121,6 +119,20 @@ var moveMap = function(result) {
 
 };
 
+var getCoords = function(result) {
+
+  var locations = result.Response.View[0].Result,
+      position,
+      marker;
+
+  document.getElementById("p0").innerHTML = locations[0].Location.DisplayPosition.Latitude;
+  document.getElementById("p1").innerHTML = locations[0].Location.DisplayPosition.Longitude;
+  
+ 
+}
+
+
+
 // Get an instance of the geocoding service:
 var geocoder = api.getGeocodingService();
 
@@ -144,3 +156,16 @@ geocoder.geocode(geocodingParams, moveMap, function(e) {
 alert(e);
 });
 }
+
+
+function convertAddressToCoords(address) {
+
+geocodingParams = {searchText: address, country: "USA"};
+
+geocoder.geocode(geocodingParams, getCoords, function(e) {
+alert(e);
+});
+
+}
+
+
