@@ -18,6 +18,13 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+<script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+
+
 <style>
    .scrollingTabl{
        overflow-y: auto;
@@ -34,6 +41,10 @@
    </style>
 </head>
 <body>
+
+
+  
+
   <!--Sets a background to the website-->
   <div class="bg">
     <!--This applies the oswald font to the entire website-->
@@ -101,7 +112,10 @@
               </form>
             </div>
           </div>
+          <div style="width: 100%; height: 360px" id="mapContainer"></div>
+			<script src="map.js" type="text/javascript"></script>
         </div>
+        
         <div class ="col-sm-9">
           <!--The Table goes here-->
           <div class="tableProp">
@@ -142,23 +156,46 @@
                 	
                 	
                 	Iterator<String[]> i = results.iterator();
+                	int count = 0;
                 	
                 	while(i.hasNext())
                 	{
-                		
+                		count++;
                 		String[] s = i.next();
-                		out.println("<tr>");
+                		out.println("<tr id=\"row" + count + "\">");
                 		out.println("<td>" + s[0] + " " + s[1] + "</td>"); 	//Proccedure
                 		out.println("<td>" + s[3] + "</td>");//Institute
-                		out.println("<td>" + s[10] + "</td>");				//Price
+                		out.println("<td>" + s[6] + "</td>");				//Price
                 		out.println("<td>" + "Distance placeholder" + "</td>");				//Distance
                 		out.println("<td>" + "Rank placeholder" + "</td>");				//Rank
+                    	out.println("<td id=\"address" + count + "\" style=\"display:none;\">" + '"' + s[3] + ", "+ s[4]  + ", " + s[5] + '"' + "</td>");       //Rank
                 		out.println("</tr>");
+                		
+                		
+                		
+                		%>
+                		<script type="text/javascript">
+                		var address = <% out.print('"' + s[3] + ", "+ s[4]  + ", " + s[5] + '"');%>;
+                		addLocationToMap(address);
+                		
+                		//https://stackoverflow.com/questions/1207939/adding-an-onclick-event-to-a-table-row
+                		
+                		var row = document.getElementById(<% out.print("\"row" + count + "\"");%>);
+                		var clickHandler = function(row) {
+                			return function() {
+                				zoomToLocation(document.getElementById(<% out.print("\"address" + count + "\"");%>).innerHTML);
+                			}
+                		}
+                		row.onclick = clickHandler(row);
+                		
+                		
+                		</script>
+                		<%
                 	}
                 	
                 	out.println("</tbody>");
                 	
-                	
+               	
                 }
                 catch(Exception e)
                 {
@@ -307,5 +344,6 @@ function makeTableScroll() {
     wrapper.style.height = height + "px";
   }
 }
+
 </script>
 </html>
