@@ -1,13 +1,14 @@
-var platform = new H.service.Platform({
+var api = new H.service.Platform({
   apikey: '10UmFtAGly-G0AEFjDot_PuKKz4nsfHnOryzfp-EYzg'
 });
 
 // Obtain the default map types from the platform object:
-var defaultLayers = platform.createDefaultLayers();
+var defaultLayers = api.createDefaultLayers();
 
 // Instantiate (and display) a map object:
 var map = new H.Map(document.getElementById('mapContainer'), defaultLayers.vector.normal.map, {center: { lat: 39, lng: -104 }, zoom: 3.6, pixelRatio: window.devicePixelRatio || 1 });
 
+//Stores markup for a Hospital Icon.
 var svgMarkup = '<svg width="24" height="24" ' +
         'xmlns="http://www.w3.org/2000/svg">' +
         '<rect stroke="white" fill="#1b468d" x="1" y="1" width="22" ' +
@@ -23,21 +24,25 @@ var icon = new H.map.Icon(svgMarkup),
   // Add the marker to the map and center the map at the location of the marker:
   map.addObject(marker);
 
+//instantiate map events to allow for map interaction on supported devices.
 var mapEvents = new H.mapevents.MapEvents(map);
 new H.mapevents.Behavior(mapEvents);
 
+//Applies default UI to map for zooming and viewing layers.
 var ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
-/*
+
+//Set location and content for a speech bubble.
 var bubble = new H.ui.InfoBubble({lat: 39, lng: -103},{
   content:'<p>Hospital</p>'
 });
 
+//Add bubble to map
 ui.addBubble(bubble);
 
-map.addEventListener('drag',function(evt){
-  alert(evt);
-});
-*/
+// Create the parameters for the geocoding request:
+var geocodingParams = {
+      searchText: 'New York'
+    };
 
 
 // Define a callback function to process the geocoding response:
@@ -95,13 +100,14 @@ var moveMap = function(result) {
 };
 
 // Get an instance of the geocoding service:
-var geocoder = platform.getGeocodingService();
+var geocoder = api.getGeocodingService();
 
 // Call the geocode method with the geocoding parameters,
 // the callback and an error callback function (called if a
 // communication error occurs):
 function addLocationToMap(address) {
   geocodingParams = {searchText: address, country: "USA"};
+
   
   geocoder.geocode(geocodingParams, onResult, function(e) {
   alert(e);
@@ -116,6 +122,5 @@ geocoder.geocode(geocodingParams, moveMap, function(e) {
 alert(e);
 });
 }
-
 
 
