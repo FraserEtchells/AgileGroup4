@@ -6,14 +6,7 @@ var api = new H.service.Platform({
 var defaultLayers = api.createDefaultLayers();
 
 // Instantiate (and display) a map object:
-var map = new H.Map(
-    document.getElementById('mapContainer'),
-    defaultLayers.vector.normal.map,
-    {
-      zoom: 3.6,
-      center: { lat: 39, lng: -104 }
-    }
-);
+var map = new H.Map(document.getElementById('mapContainer'), defaultLayers.vector.normal.map, {center: { lat: 39, lng: -104 }, zoom: 3.6 });
 
 var svgMarkup = '<svg width="24" height="24" ' +
         'xmlns="http://www.w3.org/2000/svg">' +
@@ -156,6 +149,8 @@ var geocoder = api.getGeocodingService();
 // Call the geocode method with the geocoding parameters,
 // the callback and an error callback function (called if a
 // communication error occurs):
-var temp = geocoder.geocode(geocodingParams, onResult, function(e) {
+function addLocationToMap(address) {
+  geocodingParams = {searchText: address, country: "USA"};
+  geocoder.geocode(geocodingParams, onResult, function(e) {
   alert(e);
 });
