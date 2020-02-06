@@ -104,7 +104,6 @@
         <div class ="col-sm-9">
           <!--The Table goes here-->
           <div class="tableProp">
-
               <table id="myTable" class="table">
                 <thead class="thead-dark">
                   <tr>
@@ -129,12 +128,8 @@
                 	
                 }
                 
-                
-                
-                
                 try
                 {
-                	
                 	LinkedList<String[]> results = SQLConnect.run(searchParam, minPrice, maxPrice);
                 	
                 	out.println("<tbody>");
@@ -144,33 +139,24 @@
                 	
                 	while(i.hasNext())
                 	{
-                		
                 		String[] s = i.next();
                 		out.println("<tr>");
-                		out.println("<td>" + s[0] + " " + s[1] + "</td>"); 	//Proccedure
-                		out.println("<td>" + s[3] + "</td>");//Institute
-                		out.println("<td>" + s[10] + "</td>");				//Price
-                		out.println("<td>" + "Distance placeholder" + "</td>");				//Distance
-                		out.println("<td>" + "Rank placeholder" + "</td>");				//Rank
+                		out.println("<td>" + s[0] + " " + s[1] + "</td>"); 		//Proccedure
+                		out.println("<td>" + s[3] + "</td>");					//Institute
+                		out.println("<td>" + "$" + String.format("%1.2f", Float.parseFloat(s[10])) + "</td>");	//Price
+                		out.println("<td>" + "Distance placeholder" + "</td>");	//Distance
+                		out.println("<td>" + "Rank placeholder" + "</td>");		//Rank
                 		out.println("</tr>");
                 	}
                 	
                 	out.println("</tbody>");
-                	
-                	
                 }
                 catch(Exception e)
                 {
                 	out.println("error (" + e.getMessage() + ")");
                 }
-                
-                
-                
-                
                 %>
-                
               </table>
-
           </div>
         </div>
       </div>
