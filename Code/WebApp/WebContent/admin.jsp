@@ -56,20 +56,27 @@
                 	username = request.getParameter("username");
                 	password = request.getParameter("password");
                 	
+                	try{
+                    	Connection con = SQLAdmin.connectToDatabase(username, password);
+                    	if(con.isValid(0) == true)
+                    	{
+                    		out.println("Success - Valid connection");
+                    		  Cookie validUser = new Cookie("validUser","true");
+                    		  response.addCookie( validUser);
+                    		  //String redirectURL = request.getAttribute("javax.servlet.forward.request_uri").toString();
+                    		 // out.println(redirectURL);
+                    		 // response.sendRedirect("");
+                    		 out.println("<script>window.location.href='index.jsp'</script>");
+                    	}
+                    
+                    }
+                    catch(Exception e)
+                    {
+                    	out.println("error (" + e.getMessage() + ")");
+                    }
+                	
                 }
                 
-                try{
-                	Connection con = SQLAdmin.connectToDatabase(username, password);
-                	if(con.isValid(0) == true)
-                	{
-                		out.println("Success - Valid connection");
-                	}
-                
-                }
-                catch(Exception e)
-                {
-                	out.println("error (" + e.getMessage() + ")");
-                }
 %>
 
 </body>
