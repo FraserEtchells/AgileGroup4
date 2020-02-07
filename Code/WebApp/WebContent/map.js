@@ -112,9 +112,7 @@ var moveMap = function(result) {
         lat: locations[0].Location.DisplayPosition.Latitude,
         lng: locations[0].Location.DisplayPosition.Longitude
       };
-      alert(locations[0].Location.DisplayPosition.Latitude);
-      alert(locations[0].Location.DisplayPosition.Longitude);
-      map.setZoom(4);
+      map.setZoom(10);
       map.setCenter({lat:locations[0].Location.DisplayPosition.Latitude, lng:locations[0].Location.DisplayPosition.Longitude});
 
 };
@@ -128,7 +126,7 @@ var getCoords = function(result) {
   var startLat = document.getElementById("startLat").innerHTML;
   var startLng = document.getElementById("startLng").innerHTML;
   
-  alert("long - " + locations[0].Location.DisplayPosition.Latitude);
+  
   
   	var count = parseInt(document.getElementById("p0").innerHTML, 10);
   
@@ -136,7 +134,6 @@ var getCoords = function(result) {
 	  //document.getElementById("p1").innerHTML = locations[0].Location.DisplayPosition.Longitude;
 	  
   	var idDist = "distance" + count;
-  	alert("id = " + idDist);
   	document.getElementById(idDist).innerHTML = haversine(startLat,startLng,locations[0].Location.DisplayPosition.Latitude,locations[0].Location.DisplayPosition.Longitude);
   	count = count + 1;
   	document.getElementById("p0").innerHTML = count;
@@ -148,14 +145,16 @@ var getCoordsForSetLocation = function(result) {
 	  var locations = result.Response.View[0].Result,
 	      position,
 	      marker;
+	  
+	  var lat = locations[0].Location.DisplayPosition.Latitude;
+    var lng = locations[0].Location.DisplayPosition.Longitude;
+	  
+		  document.getElementById("startLat").innerHTML = lat;
+		  document.getElementById("startLng").innerHTML = lng;
 
-	  
-	  alert("long - " + locations[0].Location.DisplayPosition.Latitude);
-	  
-	  
-	  
-		  document.getElementById("startLat").innerHTML = locations[0].Location.DisplayPosition.Latitude;
-		  document.getElementById("startLng").innerHTML = locations[0].Location.DisplayPosition.Longitude;
+      alert("Location = " + lat + ", " + lng);
+
+
 		  
 	  
 	  
@@ -191,7 +190,7 @@ alert(e);
 
 function convertAddressToCoords(address, setLocation) {
 
-	alert(address);
+	
 geocodingParams = {searchText: address, country: "USA"};
 if(setLocation)
 	{

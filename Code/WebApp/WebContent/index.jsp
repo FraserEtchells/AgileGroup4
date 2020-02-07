@@ -112,7 +112,7 @@
               </form>
             </div>
           </div>
-          <div style="width: 100%; height: 360px" id="mapContainer"></div>
+          <div style="width: 320px; height: 360px" id="mapContainer"></div>
 			<script src="map.js" type="text/javascript"></script>
         </div>
         
@@ -154,12 +154,13 @@
                 	out.println("<div id=\"p0\" style=\"display:none;\">1</div>");
                     out.println("<div id=\"startLat\" style=\"display:none;\"></div>");
                     out.println("<div id=\"startLng\" style=\"display:none;\"></div>");
-                    out.println("<div id=\"p3\" style=\"display:none;\"></div>");
+                    
                     
                     %>
                     <script type="text/javascript">
                     //Set location
-                    convertAddressToCoords("New York", true);
+                    alert("Area = " + document.getElementById("area").innerHTML);
+                    convertAddressToCoords(document.getElementById("area").innerHTML, true);
                     </script>
                     <% 
                 	
@@ -176,7 +177,7 @@
                 		
                 		String[] s = i.next();
                 		out.println("<tr id=\"row" + count + "\">");
-                      out.println("<td id=\"address" + count + "\" style=\"display:none;\">" + '"' + s[3] + ", "+ s[4]  + ", " + s[5] + '"' + "</td>");       //Rank
+                      out.println("<td id=\"address" + count + "\" style=\"display:none;\">" + '"' + s[3] + ", "+ s[4]  + ", " + s[5] + '"' + "</td>");       //Address
                 		out.println("<td>" + s[0] + " " + s[1] + "</td>"); 	//Proccedure
                 		out.println("<td>" + s[3] + "</td>");//Institute
                 		out.println("<td>" + s[6] + "</td>");				//Price
@@ -187,14 +188,6 @@
 		%>
 		<script type="text/javascript">
                     convertAddressToCoords(document.getElementById(<% out.print("\"address" + count + "\"");%>).innerHTML, false);
-                    
-                    
-                    
-                    alert("p0 = " + p0);
-                    
-                    //alert(p0);
-                    
-                    
                     
                     
         </script>
