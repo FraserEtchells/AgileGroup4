@@ -17,6 +17,9 @@
 <link rel="stylesheet" type="text/css" href="css/table.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <style>
    .scrollingTabl{
@@ -34,28 +37,30 @@
    </style>
 </head>
 <body>
-  <!--Sets a background to the website-->
-  <div class="bg">
     <!--This applies the oswald font to the entire website-->
     <div id="oswaldFont">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="#">Craneware</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-	  <div class="collapse navbar-collapse" id="navbarNav">
-	    <ul class="navbar-nav">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
-	      </li>
-	    </ul>
-	  </div>
-	</nav>
-	<br>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<a class="navbar-brand" href="#">Craneware</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item active">
+							<a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+  <!--Sets a background to the website-->
+  <div class="bg-results">
+			<div class="bg">
+		</div>
+		<br>
       <div class="row">
         <div class="col-sm">
           <!--Puts a margin to left of the filter-->
-          <div class="filter">
+          <div class="filter-sm">
             <div class="pad">
               <!--This is the Filter Form-->
               <!--TODO: add an action to the form-->
@@ -109,7 +114,7 @@
                   <tr>
                     <th scope="col" onclick="sortTable(0)">Procedure</th>
                     <th scope="col" onclick="sortTable(1)">Institute</th>
-                    <th scope="col" onclick="sortTableNumericaly(2)">Average Price ($)</th>
+                    <th scope="col" onclick="sortTableNumericaly(2)">Average Price</th>
                     <th scope="col" onclick="sortTableNumericaly(3)">Distance</th>
                     <th scope="col" onclick="sortTableNumericaly(4)">Rank</th>
                   </tr>

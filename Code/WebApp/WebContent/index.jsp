@@ -16,7 +16,10 @@
 <link rel="stylesheet" type="text/css" href="css/inputform.css">
 <link rel="stylesheet" type="text/css" href="css/table.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <style>
    .scrollingTabl{
@@ -34,12 +37,10 @@
    </style>
 </head>
 <body>
-  <!--Sets a background to the website-->
-  <div class="bg">
-    <!--This applies the oswald font to the entire website-->
+<!--This applies the oswald font to the entire website-->
     <div id="oswaldFont">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="#">Craneware</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand">Craneware</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -51,8 +52,9 @@
 	    </ul>
 	  </div>
 	</nav>
-	<br>
-      <div class="row">
+  <!--Sets a background to the website-->
+  <div class="bg">
+			<div class="row">
         <div class="col-sm">
           <!--Puts a margin to left of the filter-->
           <div class="filter">
@@ -61,29 +63,43 @@
               <!--TODO: add an action to the form-->
               <form action="results.jsp">
               	<div class="row">
-              	  <div class="col">
-              	  	<input class="form-control" type="search" placeholder="Procedure" name="search">
-              	  </div>
-              	  <div class="col">
-              	  	<input class="form-control" type="search" placeholder="Condition" name="search">
-              	  </div>
-              	</div>
-              	<br>
-                <div class="row">
-                  <div class="col">
-                    <label for="maxPrice">Max. Price</label>
-                    <input type="number" class="form-control" placeholder="1000000" name="maxPrice" min="0" max="1000000" id="maxPrice">
-                  </div>
-                </div>
-                <br>
-                <div class="row">
-                  <div class="col">
-                    <label for="area">Location</label>
-                    <input type="search" class="form-control" placeholder="Location" id="area" name="location">
-                  </div>
-                  <div class="col">
-                    <label for="distance">Distance</label>
-                    <select class="form-control" id="distance">
+									<div class="col">
+										Search by:
+									</div>
+								</div>
+								<div class="row">
+									<div class="col">
+										<div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+											<label for="proSearch" class="btn btn-primary active">
+												<input type="radio" name="procedure" id="proSearch" autocomplete="off" checked> Procedure
+											</label>
+											<label for="conSearch" class="btn btn-primary">
+												<input type="radio" name="condition" id="conSearch" autocomplete="off"> Condition
+											</label>
+										</div>
+									</div>
+									<div class="col">
+										<label for="maxPrice">Maximum Price ($)</label>
+									</div>
+									<div class="col">
+										<label for="area">Location</label>
+									</div>
+									<div class="col">
+										<label for="distance">Distance</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col">
+										<input class="form-control" type="search" placeholder="Search..." name="search">
+									</div>
+									<div class="col">
+										<input type="number" class="form-control" placeholder="100000" name="maxPrice" min="0" max="10000000" id="maxPrice">
+									</div>
+									<div class="col">
+										<input type="search" class="form-control" placeholder="Location" id="area" name="location">
+									</div>
+									<div class="col">
+										<select class="form-control" id="distance">
                       <option>1 mile</option>
                       <option>5 miles</option>
                       <option>10 miles</option>
@@ -93,10 +109,14 @@
                       <option>75 miles</option>
                       <option>100 miles</option>
                     </select>
-                  </div>
-                </div>
-                <br>
-                <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col">
+										<button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
+									</div>
+								</div>
               </form>
             </div>
           </div>
