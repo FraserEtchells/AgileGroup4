@@ -10,7 +10,8 @@ import sql.DataSetFormater;
 
 class DataSetFormaterTest {
 
-	public String testData = "002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,10033,UNIVERSITY OF ALABAMA HOSPITAL,619 SOUTH 19TH STREET,BIRMINGHAM,AL,35233,AL - Birmingham,13,\"$1,016,806.46\",\"$296,937.00\",\"$150,139.69\"\r\n" +
+	public String testData = "HEADERS DATA SHOULD NOT BE PROCESSED\n" +
+			"002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,10033,UNIVERSITY OF ALABAMA HOSPITAL,619 SOUTH 19TH STREET,BIRMINGHAM,AL,35233,AL - Birmingham,13,\"$1,016,806.46\",\"$296,937.00\",\"$150,139.69\"\r\n" +
 			"002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,30103,MAYO CLINIC HOSPITAL,5777 EAST MAYO BOULEVARD,PHOENIX,AZ,85054,AZ - Phoenix,26,\"$443,387.54\",\"$215,059.54\",\"$163,889.31\"\r\n" +
 			"002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,40114,BAPTIST HEALTH MEDICAL CENTER-LITTLE ROCK,\"9601 INTERSTATE 630, EXIT 7\",LITTLE ROCK,AR,72205,AR - Little Rock,33,\"$711,472.00\",\"$180,315.55\",\"$145,192.61\"\r\n" +
 			"002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,50025,UC SAN DIEGO HEALTH HILLCREST - HILLCREST MED CTR,200 WEST ARBOR DRIVE,SAN DIEGO,CA,92103,CA - San Diego,17,\"$796,343.82\",\"$299,244.41\",\"$270,131.59\"\r\n" +
@@ -24,8 +25,8 @@ class DataSetFormaterTest {
 	@Test
 	void separateColumTest() {
 		DataSetFormater temp = new DataSetFormater();
-		String[] colums = temp.separateRow("001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,050625,CEDARS-SINAI MEDICAL CENTER,8700 BEVERLY BLVD,LOS ANGELES,CA,90048,CA - Los Angeles,47,\"$2,868,377.13\",\"$361,621.11\",\"$345,847.51\"");
-		assertEquals("001",														colums[0],"Not Procedure ID");
+		String[] colums = temp.separateRow("002 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC,050625,CEDARS-SINAI MEDICAL CENTER,8700 BEVERLY BLVD,LOS ANGELES,CA,90048,CA - Los Angeles,47,\"$2,868,377.13\",\"$361,621.11\",\"$345,847.51\"");
+		assertEquals("002",														colums[0],"Not Procedure ID");
 		assertEquals("HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC",colums[1],"Not Procedure Description");
 		assertEquals("050625",													colums[2],"Not Provider ID");
 		assertEquals("CEDARS-SINAI MEDICAL CENTER",								colums[3],"Not Provider Name");
@@ -89,7 +90,7 @@ class DataSetFormaterTest {
 		String[][] processData = temp.processData(testData);
 		String[] procedureData = temp.getProcedureData(processData[0]);	
 		
-		assertEquals("001",	procedureData[0], "Didnt get procedure id");
+		assertEquals("002",	procedureData[0], "Didnt get procedure id");
 		assertEquals("HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC",procedureData[1], "Didnt get procedure desc");
 
 	}
@@ -112,7 +113,7 @@ class DataSetFormaterTest {
 		String[][] processData = temp.processData(testData);
 		String[] ppData = temp.getProcedureToProviderData(processData[0]);	
 		
-		assertEquals("001",	ppData[0], "Didnt get procedure id");
+		assertEquals("002",	ppData[0], "Didnt get procedure id");
 		assertEquals("10033",	ppData[1], "Didnt get provider id");
 		assertEquals("13",	ppData[2], "Didnt get discharges");
 		assertEquals("296,937.00",	ppData[3], "Didnt get price");
@@ -127,12 +128,12 @@ class DataSetFormaterTest {
 		LinkedList<String[]> ppData = temp.getProcedureToProviders(processData);	
 		
 		assertEquals(10,	ppData.size(), "Didnt get all procedures to provider");
-		assertEquals("001",	ppData.getFirst()[0], "Didnt get all procedures");
+		assertEquals("002",	ppData.getFirst()[0], "Didnt get all procedures");
 		assertEquals("10033",	ppData.getFirst()[1], "Didnt get all procedures");
 		assertEquals("13",	ppData.getFirst()[2], "Didnt get all procedures");
 		assertEquals("296,937.00",	ppData.getFirst()[3], "Didnt get all procedures");
 		
-		assertEquals("001",	ppData.getLast()[0], "Didnt get all procedures");
+		assertEquals("002",	ppData.getLast()[0], "Didnt get all procedures");
 		assertEquals("50625",	ppData.getLast()[1], "Didnt get all procedures");
 		assertEquals("47",	ppData.getLast()[2], "Didnt get all procedures");
 		assertEquals("361,621.11",	ppData.getLast()[3], "Didnt get all procedures");
@@ -146,7 +147,7 @@ class DataSetFormaterTest {
 	@Test
 	void uploadTest() {
 		DataSetFormater temp = new DataSetFormater();
-		temp.uploadData(testData);
+		//temp.uploadData(testData);
 		
 		
 		//GET HOSPITALS

@@ -77,8 +77,8 @@ public class DataSetFormater {
 		
 		// Separate by newLine
 		String[] splitData = data.split("\n"); 
-		//System.out.print(Arrays.toString(splitData));
-		return splitData;
+		String[] result = Arrays.copyOfRange(splitData, 1,splitData.length);
+		return result;
 		
 	}
 	
