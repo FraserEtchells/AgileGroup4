@@ -152,7 +152,7 @@ var getCoordsForSetLocation = function(result) {
 		  document.getElementById("startLat").innerHTML = lat;
 		  document.getElementById("startLng").innerHTML = lng;
 
-      alert("Location = " + lat + ", " + lng);
+     
 
 
 		  
