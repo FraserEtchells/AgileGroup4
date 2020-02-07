@@ -59,7 +59,7 @@ var bubble = new H.ui.InfoBubble({lat: 39, lng: -103},{
 });
 
 //Add bubble to map
-ui.addBubble(bubble);
+
 
 // Create the parameters for the geocoding request:
 var geocodingParams = {
