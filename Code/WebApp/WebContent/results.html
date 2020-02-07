@@ -48,48 +48,51 @@
 	<br>
       <div class="row">
         <div class="col-sm">
-          <!--Puts a margin to left of the filter-->
-          <div class="filter">
-            <div class="pad">
-              <!--This is the Filter Form-->
-              <!--TODO: add an action to the form-->
-              <form action="index.jsp">
-              	<div class="row">
-              	  <div class="col">
-              	  	<input class="form-control" type="search" placeholder="Procedure or Condition" name="search">
-              	  </div>
-              	</div>
-              	<br>
-                <div class="row">
-                  <div class="col">
-                    <label for="minPrice">Min. Price</label>
-                    <input type="number" class="form-control" placeholder="0" name="minPrice" min="0" max="1300000" id="minPrice">
-                  </div>
-                  <div class="col">
-                    <label for="maxPrice">Max. Price</label>
-                    <input type="number" class="form-control" placeholder="1000000" name="maxPrice" min="0" max="1000000" id="maxPrice">
-                  </div>
-                </div>
-                <br>
-                <div class="row">
-                  <div class="col">
-                    <label for="area">Location</label>
-                    <input type="search" class="form-control" placeholder="Location" id="area" name="location">
-                  </div>
-                  <div class="col">
-                    <label for="distance">Distance</label>
-                    <select class="form-control" id="distance">
-                      <option>1 mile</option>
-                      <option>5 miles</option>
-                      <option>10 miles</option>
-                      <option>15 miles</option>
-                      <option>30 miles</option>
-                      <option>50 miles</option>
-                      <option>75 miles</option>
-                      <option>100 miles</option>
-                    </select>
-                  </div>
-                </div>
+          <!-- Puts a margin to left of the search form -->
+	          			<div class="filter-sm">
+	            			<div class="pad">
+	              				<!--Search form-->
+	              				<form action="results.jsp">
+	              					<div class="row">
+	              	  					<div class="col">
+	              	  						<input class="form-control" type="search" placeholder="Procedure" name="search">
+	              	  					</div>
+	              	  					<div class="col">
+	              	  						<input class="form-control" type="search" placeholder="Condition" name="search">
+	              	  					</div>
+	              					</div>
+	              					<br>
+	                				<div class="row">
+	                  					<div class="col">
+						                    <label for="maxPrice">Max. Price</label>
+						                    <input type="number" class="form-control" placeholder="1000000" name="maxPrice" min="0" max="1000000" id="maxPrice">
+	                  					</div>
+	                				</div>
+	                				<br>
+	                				<div class="row">
+	                  					<div class="col">
+	                    					<label for="area">Location</label>
+	                    					<input type="search" class="form-control" placeholder="Location" id="area" name="location">
+	                  					</div>
+	                  					<div class="col">
+	                    					<label for="distance">Distance</label>
+                    						<select class="form-control" id="distance">
+                      							<option>1 mile</option>
+                      							<option>5 miles</option>
+                      							<option>10 miles</option>
+                      							<option>15 miles</option>
+                      							<option>30 miles</option>
+                      							<option>50 miles</option>
+                      							<option>75 miles</option>
+                      							<option>100 miles</option>
+                    						</select>
+	                  					</div>
+	                				</div>
+	                				<br>
+	                				<button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
+	              				</form>
+	            			</div>
+	          			</div>
                 <br>
                 <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
               </form>

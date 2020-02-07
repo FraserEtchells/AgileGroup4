@@ -46,55 +46,75 @@
 	  		<!-- Sets the background of the WebSite -->
 	  		<div class="bg-results">
 				<br>
+				<div class="row">
+					<div class="col">
+						<!-- Puts a margin to left of the search form -->
+			          	<div class="filter">
+			            	<div class="pad">
+				              	<!--Search form-->
+				              	<form action="results.jsp">
+				              		<div class="row">
+										<div class="col">
+											Search by:
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+												<label for="proSearch" class="btn btn-primary active">
+													<input type="radio" name="procedure" id="proSearch" autocomplete="off" checked> Procedure
+												</label>
+												<label for="conSearch" class="btn btn-primary">
+													<input type="radio" name="condition" id="conSearch" autocomplete="off"> Condition
+												</label>
+											</div>
+										</div>
+										<div class="col">
+											<label for="maxPrice">Maximum Price ($)</label>
+										</div>
+										<div class="col">
+											<label for="area">Location</label>
+										</div>
+										<div class="col">
+											<label for="distance">Distance</label>
+										</div>
+									</div>
+									<div class="row">
+										<%
+											//Pulls the form data the user entered previously
+											out.println("<div class=\"col\">");
+											out.println("<input class=\"form-control\" type=\"search\" placeholder=\"Search...\" name=\"search\" value=\"" + request.getParameter("search") + "\">");
+											out.println("</div>");
+											out.println("<div class=\"col\">");
+											out.println("<input type=\"number\" class=\"form-control\" placeholder=\"100000\" name=\"maxPrice\" min=\"0\" max=\"10000000\" id=\"maxPrice\" value=\"" + request.getParameter("maxPrice") + "\">");
+											out.println("</div>");
+											out.println("<div class=\"col\">");
+											out.println("<input type=\"search\" class=\"form-control\" placeholder=\"Location\" id=\"area\" name=\"location\" value=\"" + request.getParameter("location") + "\">");
+											out.println("</div>");			
+										%>
+										<div class="col">
+											<select class="form-control" id="distance">
+					      		            	<option>1 mile</option>
+					                      		<option>5 miles</option>
+					                      		<option>10 miles</option>
+					                      		<option>15 miles</option>
+							                    <option>30 miles</option>
+							                    <option>50 miles</option>
+							                    <option>75 miles</option>
+							                    <option>100 miles</option>
+							                </select>
+										</div>
+									</div>
+					</div>
+				</div>
 	      		<div class="row">
-	        		<div class="col-sm">
-	          			<!-- Puts a margin to left of the search form -->
-	          			<div class="filter-sm">
-	            			<div class="pad">
-	              				<!--Search form-->
-	              				<form action="results.jsp">
-	              					<div class="row">
-	              	  					<div class="col">
-	              	  						<input class="form-control" type="search" placeholder="Procedure" name="search">
-	              	  					</div>
-	              	  					<div class="col">
-	              	  						<input class="form-control" type="search" placeholder="Condition" name="search">
-	              	  					</div>
-	              					</div>
-	              					<br>
-	                				<div class="row">
-	                  					<div class="col">
-						                    <label for="maxPrice">Max. Price</label>
-						                    <input type="number" class="form-control" placeholder="1000000" name="maxPrice" min="0" max="1000000" id="maxPrice">
-	                  					</div>
-	                				</div>
-	                				<br>
-	                				<div class="row">
-	                  					<div class="col">
-	                    					<label for="area">Location</label>
-	                    					<input type="search" class="form-control" placeholder="Location" id="area" name="location">
-	                  					</div>
-	                  					<div class="col">
-	                    					<label for="distance">Distance</label>
-                    						<select class="form-control" id="distance">
-                      							<option>1 mile</option>
-                      							<option>5 miles</option>
-                      							<option>10 miles</option>
-                      							<option>15 miles</option>
-                      							<option>30 miles</option>
-                      							<option>50 miles</option>
-                      							<option>75 miles</option>
-                      							<option>100 miles</option>
-                    						</select>
-	                  					</div>
-	                				</div>
-	                				<br>
-	                				<button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
-	              				</form>
-	            			</div>
-	          			</div>
+	        		<div class="col">
+	        			
+	          			<div id="mapContainer">
+	          			
+						</div>
 	        		</div>
-	        		<div class ="col-sm-9">
+	        		<div class ="col">
 	          			<!--The Table goes here-->
 	          			<div class="tableProp">
 	              			<table id="myTable" class="table">
