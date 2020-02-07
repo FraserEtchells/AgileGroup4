@@ -190,7 +190,7 @@
                     
                     
                     
-                    alert("p0 = " + p0);
+                    //alert("p0 = " + p0);
                     
                     //alert(p0);
                     
