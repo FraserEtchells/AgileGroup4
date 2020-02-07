@@ -28,9 +28,20 @@ Summary:
 
 Day 4 - 6/2/2020
 Members Present: Michael (SM), Patryk, Aditya
-Members Absent: Tom, Josh (dead)
+Members Absent: Tom, Josh
 Summary:
 - Patryk worked on cleaning/processing data in preparation for database insertion. Will work in inserting data (full spreadsheet database) into database.
 - Aditya got maps API to find shortest route between two points. Will work on removing the route-line in the display, and getting the distance.
 - Michael worked on backend database for client admin. Will work with Patryk on inserting data into the database.
 - Fraser worked on the login page functionality, need to work with Patryk to link back to the admin procedure page.
+
+Day 5 - 7/2/2020
+Members Present: Michael (SM), Fraser, Patryk, Aditya, Tom, Josh
+Summary:
+- Fraser worked on the Admin Page, and merging everything
+- Patryk worked on the Admin Page/uploading to database
+- Josh worked on website design/layout
+- Tom worked on incorporating the map to the website
+- Adi worked on making sure the map functionality was all present
+- Michael worked on the database, procedures, and documentation.
+- Everyone prepared for Sprint Review
