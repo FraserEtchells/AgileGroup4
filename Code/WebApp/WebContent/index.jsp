@@ -1,7 +1,6 @@
 <%@ 
 	page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"
-	import="test.Output"
 	import="sql.SQLConnect"
 	import="java.util.LinkedList"
 	import="java.util.Iterator"

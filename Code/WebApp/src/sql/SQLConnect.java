@@ -27,7 +27,12 @@ public class SQLConnect
 	
 		public static void main(String[] args)
 		{
-			run("1","0","400000");
+			LinkedList<String[]> ll = run("1", "0", "0");
+			//System.out.println(ll.getFirst()[3]);
+			for(int i =0; i < ll.getFirst().length; i++)
+			{
+				System.out.println(ll.getFirst()[i]);
+			}
 			
 			
 		}
@@ -86,8 +91,11 @@ public class SQLConnect
 					String[] temp = new String[11];
 					temp[0] = rs.getString(1);
 					temp[1] = rs.getString(2);
+					temp[2] = rs.getString(3);
 					temp[3] = rs.getString(4);
-					temp[10] = rs.getString(7);
+					temp[4] = rs.getString(5);
+					temp[5] = rs.getString(6);
+					temp[6] = rs.getString(7);	//!
 					
 					results.add(temp);
 				}
@@ -173,9 +181,7 @@ public class SQLConnect
 												
 				return true;
 			}
-			catch(Exception e) {
-				System.out.print(e.getMessage());
-			return false;}
+			catch(Exception e) {System.out.print(e.getMessage()); return false;}
 		}
 		
 	}
