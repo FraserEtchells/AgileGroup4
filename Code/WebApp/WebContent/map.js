@@ -38,13 +38,8 @@ var svgMarkup = '<svg width="24" height="24" ' +
         'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
         'fill="white">H</text></svg>';
 
-// Create an icon, an object holding the latitude and longitude, and a marker:
-var icon = new H.map.Icon(svgMarkup),
-    coords = {lat: 39, lng: -104},
-    marker = new H.map.Marker(coords, {icon: icon});
-
-  // Add the marker to the map and center the map at the location of the marker:
-  map.addObject(marker);
+// Create a hospital icon:
+var icon = new H.map.Icon(svgMarkup);
 
 //instantiate map events to allow for map interaction on supported devices.
 var mapEvents = new H.mapevents.MapEvents(map);
@@ -53,26 +48,13 @@ new H.mapevents.Behavior(mapEvents);
 //Applies default UI to map for zooming and viewing layers.
 var ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
 
-//Set location and content for a speech bubble.
-var bubble = new H.ui.InfoBubble({lat: 39, lng: -103},{
-  content:'<p>Hospital</p>'
-});
-
-//Add bubble to map
-
-
-// Create the parameters for the geocoding request:
-var geocodingParams = {
-      searchText: 'Texas'
-    };
-
-
 // Define a callback function to process the geocoding response:
 var onResult = function(result) {
+	console.log(result);
   var locations = result.Response.View[0].Result,
       position,
       marker;
-  // Add a marker for each location found
+// Add a marker for each location found
 //  for (i = 0;  i < locations.length; i++) {
 //    position = {
 //      lat: locations[i].Location.DisplayPosition.Latitude,
@@ -86,13 +68,10 @@ var onResult = function(result) {
 	      lat: locations[0].Location.DisplayPosition.Latitude,
 	      lng: locations[0].Location.DisplayPosition.Longitude
 	    };
-
-  marker = new H.map.Marker(position, {icon: icon});
-
-	    map.addObject(marker);
-
+  addMarker(position,locations[0].Location.Address.Label);
 };
 
+/*
 var moveMap = function(result) {
   var locations = result.Response.View[0].Result,
       position,
@@ -112,53 +91,58 @@ var moveMap = function(result) {
         lat: locations[0].Location.DisplayPosition.Latitude,
         lng: locations[0].Location.DisplayPosition.Longitude
       };
-      map.setZoom(10);
+      //alert(locations[0].Location.DisplayPosition.Latitude);
+      //alert(locations[0].Location.DisplayPosition.Longitude);
+      map.setZoom(4);
       map.setCenter({lat:locations[0].Location.DisplayPosition.Latitude, lng:locations[0].Location.DisplayPosition.Longitude});
 
-};
+};*/
 
 var getCoords = function(result) {
 
+try{
   var locations = result.Response.View[0].Result,
       position,
       marker;
 
   var startLat = document.getElementById("startLat").innerHTML;
   var startLng = document.getElementById("startLng").innerHTML;
-  
-  
-  
+
+  //alert("long - " + locations[0].Location.DisplayPosition.Latitude);
+
   	var count = parseInt(document.getElementById("p0").innerHTML, 10);
-  
+
 	  //document.getElementById("p0").innerHTML = locations[0].Location.DisplayPosition.Latitude;
 	  //document.getElementById("p1").innerHTML = locations[0].Location.DisplayPosition.Longitude;
-	  
+
   	var idDist = "distance" + count;
+  	//alert("id = " + idDist);
   	document.getElementById(idDist).innerHTML = haversine(startLat,startLng,locations[0].Location.DisplayPosition.Latitude,locations[0].Location.DisplayPosition.Longitude);
   	count = count + 1;
   	document.getElementById("p0").innerHTML = count;
- 
-}
+	}
+	catch(e){
+		console.log("Result not found");
+	}
+};
 
 var getCoordsForSetLocation = function(result) {
 
 	  var locations = result.Response.View[0].Result,
 	      position,
 	      marker;
-	  
-	  var lat = locations[0].Location.DisplayPosition.Latitude;
-    var lng = locations[0].Location.DisplayPosition.Longitude;
-	  
-		  document.getElementById("startLat").innerHTML = lat;
-		  document.getElementById("startLng").innerHTML = lng;
-
-      alert("Location = " + lat + ", " + lng);
 
 
-		  
-	  
-	  
-	 
+	 // alert("long - " + locations[0].Location.DisplayPosition.Latitude);
+
+
+
+		  document.getElementById("startLat").innerHTML = locations[0].Location.DisplayPosition.Latitude;
+		  document.getElementById("startLng").innerHTML = locations[0].Location.DisplayPosition.Longitude;
+
+
+
+
 	}
 
 
@@ -182,29 +166,52 @@ function zoomToLocation(address) {
 
 geocodingParams = {searchText: address};
 
+/* NOTE: This is moving the center of the map.
 geocoder.geocode(geocodingParams, moveMap, function(e) {
 alert(e);
-});
+});*/
 }
 
 
-function convertAddressToCoords(address, setLocation) {
+function convertAddressToCoords(address, setLocation)
+{
 
-	
-geocodingParams = {searchText: address, country: "USA"};
-if(setLocation)
+	//alert(address);
+	geocodingParams = {searchText: address, country: "USA"};
+	if(setLocation)
 	{
-	geocoder.geocode(geocodingParams, getCoordsForSetLocation, function(e) {
-		alert(e);
+		geocoder.geocode(geocodingParams, getCoordsForSetLocation, function(e)
+		{
+			alert(e);
 		});
 	}
-else
+	else
 	{
-	geocoder.geocode(geocodingParams, getCoords, function(e) {
-		alert(e);
+		geocoder.geocode(geocodingParams, getCoords, function(e)
+		{
+			alert(e);
 		});
 	}
-
 }
 
+map.setCenter({lat:39,lng: -104});
 
+/**
+ * Will add the marker to the map and attach and eventlistener to the marker.
+ * @param marker An H.map.Marker Object
+ * @returns
+ */
+function addMarker(coords,address){
+	var prin = '<h5>' + address +'</h6>';
+	marker = new H.map.Marker(coords, {icon: icon, data: prin});	
+	map.addObject(marker);
+	marker.addEventListener('tap',function(evt){
+		var markers = map.getObjects();
+		if(markers.includes(evt.target)){
+			var bubble = new H.ui.InfoBubble({lat: evt.target.getGeometry().lat,lng:evt.target.getGeometry().lng},{
+				content: evt.target.getData()
+			});
+			ui.addBubble(bubble);
+		}
+	});
+}
