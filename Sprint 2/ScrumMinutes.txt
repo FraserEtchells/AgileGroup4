@@ -6,3 +6,31 @@ Summary:
 - Before the meeting, we looked at feedback from last sprint concerning the client meeting and the work we had done.
 - We also looked at the product backlog, and created a new sprint backlog to work on, distributing tasks between members.
 - We agreed to move the meetings from 2pm to 11am, as the later time seemed to make the group less efficient
+
+Day 2 - 4/2/2020
+Members Present: Michael (SM), Fraser, Patryk, Aditya, Tom, Josh
+Summary:
+- Patryk, Josh and Tom had worked, and will continue to work, on aspects of the website.
+- Fraser looked at the admin login system
+- Aditya worked on implementing the map into the website
+- Michael looked at the database component of the admin login system.
+
+Day 3 - 5/2/2020
+Members Present: Fraser, Patryk, Aditya, Tom, Josh
+Members Absent: Michael (Work),
+Summary:
+- Fraser worked on CSS for admin page, will look at accessing DB w/ admin privileges.
+- Adi worked on map, can now zoom, display icons; having problems with panning; will continue to work on map.
+- Josh worked on html
+- Tom worked on html/css. Split index page; will work on maps stuff & misc
+- Patryk worked on updating system for admin page. Will continue to work on that.
+- Michael worked on the database admin page, will work on stored procedures and distances between locations.
+
+Day 4 - 6/2/2020
+Members Present: Michael (SM), Patryk, Aditya
+Members Absent: Tom, Josh (dead)
+Summary:
+- Patryk worked on cleaning/processing data in preparation for database insertion. Will work in inserting data (full spreadsheet database) into database.
+- Aditya got maps API to find shortest route between two points. Will work on removing the route-line in the display, and getting the distance.
+- Michael worked on backend database for client admin. Will work with Patryk on inserting data into the database.
+- Fraser worked on the login page functionality, need to work with Patryk to link back to the admin procedure page.
