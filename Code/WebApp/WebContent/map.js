@@ -1,3 +1,25 @@
+function toRadians(x){
+  return x * Math.PI/180;
+};
+
+//This function calculates the distance between 2 coordinates.
+function haversine(lat1,lon1,lat2,lon2)
+{
+  //Calculating half of the change in distance between the points.
+  var halfLon = toRadians((lat1 - lat2))/2;
+  var halfLat = toRadians((lon1 - lon2))/2;
+  lat1 = toRadians(lat1);
+  lat2 = toRadians(lat2);
+  //Earth's Radius in kilometers
+  var earthRad = 6371;
+  //Calculating the
+  var a = Math.sin(halfLat) * Math.sin(halfLat) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(halfLon) * Math.sin(halfLon);
+  var angularDist = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return earthRad * angularDist;
+};
+
+haversine(38.39,-89.35,32.1,-101.34);
+
 var api = new H.service.Platform({
   apikey: '10UmFtAGly-G0AEFjDot_PuKKz4nsfHnOryzfp-EYzg'
 });
@@ -59,25 +81,23 @@ var onResult = function(result) {
 //    marker = new H.map.Marker(position, {icon: icon});
 //    map.addObject(marker);
 //  }
-  
+
   position = {
 	      lat: locations[0].Location.DisplayPosition.Latitude,
 	      lng: locations[0].Location.DisplayPosition.Longitude
 	    };
-	    
+
   marker = new H.map.Marker(position, {icon: icon});
-  
+
 	    map.addObject(marker);
-  
-      
-  
+
 };
 
 var moveMap = function(result) {
   var locations = result.Response.View[0].Result,
       position,
       marker;
-  
+
   // Add a marker for each location found
 //  for (i = 0;  i < locations.length; i++) {
 //    position = {
@@ -87,7 +107,7 @@ var moveMap = function(result) {
 //    marker = new H.map.Marker(position, {icon: icon});
 //    map.addObject(marker);
 //  }
-  
+
   position = {
         lat: locations[0].Location.DisplayPosition.Latitude,
         lng: locations[0].Location.DisplayPosition.Longitude
@@ -96,8 +116,53 @@ var moveMap = function(result) {
       alert(locations[0].Location.DisplayPosition.Longitude);
       map.setZoom(4);
       map.setCenter({lat:locations[0].Location.DisplayPosition.Latitude, lng:locations[0].Location.DisplayPosition.Longitude});
-  
+
 };
+
+var getCoords = function(result) {
+
+  var locations = result.Response.View[0].Result,
+      position,
+      marker;
+
+  var startLat = document.getElementById("startLat").innerHTML;
+  var startLng = document.getElementById("startLng").innerHTML;
+  
+  alert("long - " + locations[0].Location.DisplayPosition.Latitude);
+  
+  	var count = parseInt(document.getElementById("p0").innerHTML, 10);
+  
+	  //document.getElementById("p0").innerHTML = locations[0].Location.DisplayPosition.Latitude;
+	  //document.getElementById("p1").innerHTML = locations[0].Location.DisplayPosition.Longitude;
+	  
+  	var idDist = "distance" + count;
+  	alert("id = " + idDist);
+  	document.getElementById(idDist).innerHTML = haversine(startLat,startLng,locations[0].Location.DisplayPosition.Latitude,locations[0].Location.DisplayPosition.Longitude);
+  	count = count + 1;
+  	document.getElementById("p0").innerHTML = count;
+ 
+}
+
+var getCoordsForSetLocation = function(result) {
+
+	  var locations = result.Response.View[0].Result,
+	      position,
+	      marker;
+
+	  
+	  alert("long - " + locations[0].Location.DisplayPosition.Latitude);
+	  
+	  
+	  
+		  document.getElementById("startLat").innerHTML = locations[0].Location.DisplayPosition.Latitude;
+		  document.getElementById("startLng").innerHTML = locations[0].Location.DisplayPosition.Longitude;
+		  
+	  
+	  
+	 
+	}
+
+
 
 // Get an instance of the geocoding service:
 var geocoder = api.getGeocodingService();
@@ -108,7 +173,7 @@ var geocoder = api.getGeocodingService();
 function addLocationToMap(address) {
   geocodingParams = {searchText: address, country: "USA"};
 
-  
+
   geocoder.geocode(geocodingParams, onResult, function(e) {
   alert(e);
 });
@@ -116,11 +181,31 @@ function addLocationToMap(address) {
 
 function zoomToLocation(address) {
 
-geocodingParams = {searchText: address, country: "USA"};
-  
+geocodingParams = {searchText: address};
+
 geocoder.geocode(geocodingParams, moveMap, function(e) {
 alert(e);
 });
+}
+
+
+function convertAddressToCoords(address, setLocation) {
+
+	alert(address);
+geocodingParams = {searchText: address, country: "USA"};
+if(setLocation)
+	{
+	geocoder.geocode(geocodingParams, getCoordsForSetLocation, function(e) {
+		alert(e);
+		});
+	}
+else
+	{
+	geocoder.geocode(geocodingParams, getCoords, function(e) {
+		alert(e);
+		});
+	}
+
 }
 
 

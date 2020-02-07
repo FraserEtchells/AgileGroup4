@@ -150,28 +150,59 @@
                 try
                 {
                 	
+                	//Holds coords for distance
+                	out.println("<div id=\"p0\" style=\"display:none;\">1</div>");
+                    out.println("<div id=\"startLat\" style=\"display:none;\"></div>");
+                    out.println("<div id=\"startLng\" style=\"display:none;\"></div>");
+                    out.println("<div id=\"p3\" style=\"display:none;\"></div>");
+                    
+                    %>
+                    <script type="text/javascript">
+                    //Set location
+                    convertAddressToCoords("New York", true);
+                    </script>
+                    <% 
+                	
                 	LinkedList<String[]> results = SQLConnect.run(searchParam, minPrice, maxPrice);
                 	
                 	out.println("<tbody>");
                 	
                 	
                 	Iterator<String[]> i = results.iterator();
-                	int count = 0;
+                	int count = 1;
                 	
                 	while(i.hasNext())
                 	{
-                		count++;
+                		
                 		String[] s = i.next();
                 		out.println("<tr id=\"row" + count + "\">");
+                      out.println("<td id=\"address" + count + "\" style=\"display:none;\">" + '"' + s[3] + ", "+ s[4]  + ", " + s[5] + '"' + "</td>");       //Rank
                 		out.println("<td>" + s[0] + " " + s[1] + "</td>"); 	//Proccedure
                 		out.println("<td>" + s[3] + "</td>");//Institute
                 		out.println("<td>" + s[6] + "</td>");				//Price
-                		out.println("<td>" + "Distance placeholder" + "</td>");				//Distance
+                    out.println("<td id=\"distance" + count + "\">" + "</td>");
+                	
+                    
+                   
+		%>
+		<script type="text/javascript">
+                    convertAddressToCoords(document.getElementById(<% out.print("\"address" + count + "\"");%>).innerHTML, false);
+                    
+                    
+                    
+                    alert("p0 = " + p0);
+                    
+                    //alert(p0);
+                    
+                    
+                    
+                    
+        </script>
+		<%
+                		
                 		out.println("<td>" + "Rank placeholder" + "</td>");				//Rank
-                    	out.println("<td id=\"address" + count + "\" style=\"display:none;\">" + '"' + s[3] + ", "+ s[4]  + ", " + s[5] + '"' + "</td>");       //Rank
+                    	
                 		out.println("</tr>");
-                		
-                		
                 		
                 		%>
                 		<script type="text/javascript">
@@ -191,7 +222,12 @@
                 		
                 		</script>
                 		<%
+                		count++;
                 	}
+                	
+                	//loop
+                	
+                	
                 	
                 	out.println("</tbody>");
                 	
