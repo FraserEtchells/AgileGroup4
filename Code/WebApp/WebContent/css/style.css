@@ -1,50 +1,114 @@
+/* 
+	HTML Tags
+*/
 body,html {
-  height: 100%;
-  margin: 0;
-  background: rgb(102,97,255);
-  background: linear-gradient(180deg, rgba(102,97,255,1) 0%, rgba(143,209,255,1) 60%);
-  max-width: 100%;
-  background-size: 100%;
-  overflow-x: hidden;
-  padding-bottom: 30px;
+	height: 100%;
+	margin: 0;
+	background: rgb(102,97,255);
+	background: linear-gradient(180deg, rgba(102,97,255,1) 0%, rgba(143,209,255,1) 60%);
+	background-size: 100%;
+	overflow-x: hidden;
+	padding-bottom: 30px;
 }
 
-.bg{
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
+/*
+	Div IDs
+*/
 #oswaldFont div{
-  font-family: 'Oswald', sans-serif;
-  color: white;
+	font-family: 'Oswald', sans-serif;
+	color: white;
+}
+
+/*
+	Classes
+*/
+.bg{
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+  	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	background-attachment: fixed;
+	
+	max-width: 1080px;
+	margin: auto;
+	
+	font-family: 'Oswald', sans-serif;
+	color: white;
+}
+
+.bg-results{
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	background-attachment: fixed; 
+	
+	font-family: 'Oswald', sans-serif;
+	color: white;
+}
+
+.left-btn {
+  	float: left;
+	width: 50%;
+	text-align: left;
+}
+
+.right-btn {
+	width: 50%;
+	text-align: left;
 }
 
 .pad{
-  padding: 20px;
+  	padding: 20px;
 }
 
 .filter{
-  margin-left: 20px;
-  background-color: rgba(18, 26, 78, 0.65);
+  	margin-top: 75px;
+  	margin-left: 25px;
+  	margin-right: 25px;
+  	background-color: rgba(18, 26, 78, 0.65);
+	border-radius: 10px;
+}
+
+.filter-sm{
+  	margin-left: 25px;
+  	margin-right: 25px;
+  	background-color: rgba(18, 26, 78, 0.65);
+	border-radius: 10px;
 }
 
 .tableProp{
-  margin-right: 10px;
-  background-color: rgba(255, 255, 255, 0.52);
+	margin-right: 10px;
+  	background-color: rgba(255, 255, 255, 0.52);
 }
 
 .footer-dark{
 	position: absolute;
 	bottom: 0;
+	left: 0;
 	width: 100%;
 	color: white;
 	height: 30px;
 	text-align: center;
+}
+
+.scrollingTabl{
+	overflow-y: auto;
+}
+
+.formBorder {
+	width:1170px;
+	border-style: solid;
+	border-width: 5px;
+	border-color: white;
+	background:#fcbe03;
+    padding: 10px;
 }
