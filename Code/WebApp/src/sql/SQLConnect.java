@@ -27,17 +27,12 @@ public class SQLConnect
 	
 		public static void main(String[] args)
 		{
-			//LinkedList<String[]> ll = run("1");
+			LinkedList<String[]> ll = run("1", "0", "0");
 			//System.out.println(ll.getFirst()[3]);
-//			for(int i =0; i < ll.size(); i++)
-//			{
-//				String[] output = ll.get(i);
-//				for(int p = 0; p < 5; p++)
-//				{
-//					System.out.print(output[p] + " ");
-//				}
-//				System.out.println();
-//			}
+			for(int i =0; i < ll.getFirst().length; i++)
+			{
+				System.out.println(ll.getFirst()[i]);
+			}
 			
 			
 		}
@@ -96,30 +91,15 @@ public class SQLConnect
 					String[] temp = new String[11];
 					temp[0] = rs.getString(1);
 					temp[1] = rs.getString(2);
+					temp[2] = rs.getString(3);
 					temp[3] = rs.getString(4);
-					temp[10] = rs.getString(7);
+					temp[4] = rs.getString(5);
+					temp[5] = rs.getString(6);
+					temp[6] = rs.getString(7);	//!
 					
 					results.add(temp);
 				}
-				
-				
-            	
-//            	System.out.println("<tbody>");
-            	
-            	
-//            	Iterator<String[]> i = results.iterator();
-//            	
-//            	while(i.hasNext())
-//            	{
-//            		String[] s = i.next();
-//            		System.out.println("<td>" + s[0] + " " + s[1] + "</td>"); 	//Proccedure
-//            		System.out.println("<td>" + s[3] + "</td>");				//Institute
-//            		System.out.println("<td>" + s[10] + "</td>");				//Price
-//            		System.out.println("<td>" + "Distance placeholder" + "</td>");				//Distance
-//            		System.out.println("<td>" + "Rank placeholder" + "</td>");				//Rank
-//            	}
-//            	
-//            	System.out.println("</tbody>");
+							
 				
 				return results;
 			}
@@ -128,19 +108,24 @@ public class SQLConnect
 				System.out.println("error " + e.getMessage());
 				return null;
 			}
-			
-			
-			
-			
-			
-			
-			
-		
+
 		}
+			
+		public static void runQuery(String query) {
 		
-		
-		
-		
+			try
+			{
+				connectToDatabase();
+				Statement stmt = con.createStatement();
+				stmt.executeQuery(query);
+
+			}
+			catch(Exception e)
+			{
+				System.out.println("error " + e.getMessage());
+			}
+
+		}
 		
 		public static String[][] search(String table, String condition)
 		{
@@ -191,15 +176,12 @@ public class SQLConnect
 								+ "encrypt=true;"
 								+ "trustServerCertificate=false;"
 								+ "loginTimeout=30;";
-				
-				
+								
 				con = DriverManager.getConnection(conURL);
-				
-				
-				
+												
 				return true;
 			}
-			catch(Exception e) {return false;}
+			catch(Exception e) {System.out.print(e.getMessage()); return false;}
 		}
 		
 	}
