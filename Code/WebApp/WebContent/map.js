@@ -211,7 +211,7 @@ map.setCenter({lat:39,lng: -104});
  * @returns
  */
 function addMarker(coords,address){
-	var prin = '<h5>' + address +'</h6>';
+	var prin = '<h5 style=\"color: black;\">' + address +'</h6>';
 	marker = new H.map.Marker(coords, {icon: icon, data: prin});
 	map.addObject(marker);
 	marker.addEventListener('tap',function(evt){
